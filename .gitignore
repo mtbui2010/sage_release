@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Editor / OS
+*.bak
+*.swp
+.DS_Store
+
+# Reproducible outputs — NOT committed (regenerable via the Makefile)
+paper_sage/results/*
+paper_sage/figures/
+paper_sage/data/memory.jsonl
+
+# ...EXCEPT the shipped human-judged end-task bundle (an artifact, not a run)
+!paper_sage/results/human_eval/

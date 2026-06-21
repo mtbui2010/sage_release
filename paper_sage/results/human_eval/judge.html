@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAGE Human Evaluation</title>
+<style>
+  :root {
+    --bg: #f4f5f7; --card: #ffffff; --line: #dcdfe4; --ink: #1c1f24;
+    --muted: #6b7280; --accent: #2563eb; --ok: #16a34a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--ink); margin: 0; padding: 0 0 80px;
+    line-height: 1.45;
+  }
+  .topbar {
+    position: sticky; top: 0; z-index: 50; background: #ffffff;
+    border-bottom: 1px solid var(--line); box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    padding: 10px 20px;
+  }
+  .topbar-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .topbar h1 { font-size: 16px; margin: 0 12px 0 0; }
+  .topbar label { font-size: 13px; color: var(--muted); }
+  select, input[type=text], button {
+    font: inherit; padding: 6px 10px; border: 1px solid var(--line);
+    border-radius: 7px; background: #fff; color: var(--ink);
+  }
+  button { cursor: pointer; }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button:hover { filter: brightness(0.97); }
+  .progress { font-size: 13px; color: var(--muted); margin-left: auto; }
+  .progress b { color: var(--ink); }
+  .blurb {
+    font-size: 12.5px; color: var(--muted); padding: 6px 20px 2px;
+    max-width: 920px;
+  }
+  .blurb b { color: var(--ink); }
+  .wrap { max-width: 920px; margin: 16px auto; padding: 0 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; margin: 0 0 20px; box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  }
+  .card.done { border-left: 5px solid var(--ok); }
+  .idx { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .task { font-size: 17px; font-weight: 650; margin: 2px 0 10px; }
+  .meta { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+  .meta span { margin-right: 14px; }
+  .frame { margin: 4px 0 12px; }
+  .frame img { max-width: 520px; width: 100%; border-radius: 8px; border: 1px solid var(--line); display: block; }
+  .noframe {
+    max-width: 520px; height: 120px; display: flex; align-items: center;
+    justify-content: center; color: var(--muted); background: #eef0f3;
+    border: 1px dashed var(--line); border-radius: 8px; font-size: 13px;
+  }
+  .sect { margin: 10px 0; }
+  .sect .h { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 3px; }
+  .goal { font-size: 14px; }
+  .goal .obj { display: inline-block; background: #eff6ff; color: #1e3a8a;
+    border: 1px solid #bfdbfe; border-radius: 6px; padding: 1px 8px; margin: 2px 4px 2px 0; font-size: 13px; }
+  ol.plan { margin: 4px 0 0; padding-left: 22px; font-size: 13.5px; }
+  ol.plan li { margin: 1px 0; }
+  .states { font-size: 13px; }
+  .states .st { margin: 1px 0; }
+  .states .stobj { font-weight: 600; }
+  .auto { font-size: 12.5px; color: var(--muted); background: #fafafa;
+    border: 1px dashed var(--line); border-radius: 7px; padding: 6px 10px; margin: 10px 0; }
+  .judge { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .judge .opts { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+  .judge label.opt { font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .judge input[type=radio] { width: 16px; height: 16px; }
+  .judge .note { margin-top: 8px; }
+  .judge .note input { width: 100%; }
+  .empty { text-align: center; color: var(--muted); padding: 40px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-row">
+    <h1>SAGE Human Evaluation</h1>
+    <label>Rater:
+      <select id="raterSel">
+        <option value="rater1">rater1</option>
+        <option value="rater2">rater2</option>
+      </select>
+    </label>
+    <label>Name (optional):
+      <input type="text" id="raterName" placeholder="your name" size="14">
+    </label>
+    <button id="dlCsv">Download CSV</button>
+    <button id="dlJson">Download JSON</button>
+    <span class="progress" id="prog">judged 0 / 0</span>
+  </div>
+</div>
+<div class="blurb">
+  <b>Criteria.</b> Mark <b>1</b> only if the <b>final state</b> satisfies the full task goal.
+  Mark <b>0.5</b> only if a <b>concrete sub-goal was actually achieved</b> in the final
+  state (e.g. the machine is on but the mug is not placed) — <b>not</b> for merely moving
+  around or attempting without achieving anything. Mark <b>0</b> if nothing required was
+  achieved (e.g. the plan only navigates, or the key action — TurnOn/Pick/Place/Open —
+  never appears). Judge independently from the frame, the final states, and the executed
+  plan — check the plan actually contains the key action — <b>you decide</b>. Answers autosave per rater.
+</div>
+
+<div class="wrap" id="cards"></div>
+
+<script>
+"use strict";
+
+// ---- Embedded item data (method kept here but NEVER rendered) ----
+var ITEMS = [{"id": "Direct__K01", "method": "Direct", "task_id": "K01", "task_desc": "Make a cup of coffee using the coffee machine", "expected_objects": ["Mug", "CoffeeMachine"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "MoveTo CoffeeMachine", "Find Cup", "Pick Cup", "MoveTo Bottle", "MoveTo Kettle", "MoveTo Bottle"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Neither mug placed nor machine turned on", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/Direct__K01.jpg"}, {"id": "Direct__K02", "method": "Direct", "task_id": "K02", "task_desc": "Turn on the stove burner", "expected_objects": ["StoveBurner"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo CounterTop", "MoveTo StoveBurner", "Find StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Stove not turned on", "final_states": {"StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K02.jpg"}, {"id": "Direct__K03", "method": "Direct", "task_id": "K03", "task_desc": "Open the fridge and retrieve a tomato", "expected_objects": ["Fridge", "Tomato"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Fridge", "Find Tomato", "Find Fridge", "Open Fridge", "Find Tomato", "Pick Tomato"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Item retrieved from fridge", "final_states": {"Fridge": {"isOpen": true, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Egg|-02.04|+00.81|+01.24"]}, "Tomato": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K03.jpg"}, {"id": "Direct__K04", "method": "Direct", "task_id": "K04", "task_desc": "Boil water in a pot on the stove", "expected_objects": ["Pot", "Faucet", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo CounterTop", "Find Pot", "Pick Pot", "MoveTo Stove", "MoveTo Stove", "Find Kettle", "Open Kettle", "MoveTo Stove", "Find StoveBurner", "MoveTo StoveKnob"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Stove not turned on", "final_states": {"Pot": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K04.jpg"}, {"id": "Direct__K05", "method": "Direct", "task_id": "K05", "task_desc": "Cook an egg \u2014 place it in a pan on the stove", "expected_objects": ["Egg", "Pan", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan3", "plan": ["MoveTo StoveBurner", "Find Pot", "Pick Pot", "MoveTo Cabinet"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Egg not placed in pan", "final_states": {"Egg": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Sink|-01.99|+01.14|-00.98"], "receptacleObjectIds": []}, "Pan": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|-01.46|+00.78|-02.00"], "receptacleObjectIds": []}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K05.jpg"}, {"id": "Direct__K06", "method": "Direct", "task_id": "K06", "task_desc": "Wash an apple at the sink", "expected_objects": ["Apple", "Sink", "Faucet"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Sink", "Find Apple", "Pick Apple", "MoveTo Sink"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Apple not washed", "final_states": {"Apple": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Sink": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K06.jpg"}, {"id": "Direct__K07", "method": "Direct", "task_id": "K07", "task_desc": "Heat food in the microwave", "expected_objects": ["Plate", "Microwave"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": [], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Microwave not activated", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|+00.72|+02.02|-02.46"], "receptacleObjectIds": []}, "Microwave": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__K07.jpg"}, {"id": "Direct__K08", "method": "Direct", "task_id": "K08", "task_desc": "Set up the dining table with plates and cups", "expected_objects": ["Plate", "Cup", "DiningTable"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan4", "plan": ["MoveTo Cabinet", "Find Plate", "Pick Plate", "MoveTo DiningTable", "Place DiningTable", "Find Cup", "Pick Cup", "MoveTo DiningTable", "Place DiningTable"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Plate and cup placed on dining table", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["DiningTable|-00.62|+00.02|+02.49"], "receptacleObjectIds": []}, "Cup": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["DiningTable|-00.62|+00.02|+02.49"], "receptacleObjectIds": []}, "DiningTable": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["CoffeeMachine|-00.15|+01.04|+03.19", "Mug|-00.38|+01.09|+03.19", "Toaster|-00.23|+01.04|+02.87", "Pan|-00.27|+01.04|+02.56", "Bowl|-00.50|+01.04|+02.22", "Tomato|-00.75|+01.08|+02.40", "Bread|-00.18|+01.12|+01.89", "Spoon|-00.43|+01.04|+01.90", "Fork|-00.46|+01.04|+01.78", "Plate|-01.19|+00.92|+00.40", "Cup|-01.58|+00.92|+00.34"]}}, "frame": "frames/Direct__K08.jpg"}, {"id": "Direct__K09", "method": "Direct", "task_id": "K09", "task_desc": "Prepare a coffee and place it on the dining table", "expected_objects": ["Mug", "CoffeeMachine", "dining_table"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "MoveTo CoffeeMachine", "MoveTo CoffeeMachine", "MoveTo CoffeeMachine"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Neither mug placed nor machine turned on", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/Direct__K09.jpg"}, {"id": "Direct__L01", "method": "Direct", "task_id": "L01", "task_desc": "Turn on the television", "expected_objects": ["Television"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Find Television", "TurnOn Television"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV on but agent not sitting", "final_states": {"Television": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}}, "frame": "frames/Direct__L01.jpg"}, {"id": "Direct__L02", "method": "Direct", "task_id": "L02", "task_desc": "Sit on the sofa", "expected_objects": ["Sofa"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent sat on sofa", "final_states": {"Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Direct__L02.jpg"}, {"id": "Direct__L03", "method": "Direct", "task_id": "L03", "task_desc": "Pick up a book from the bookshelf", "expected_objects": ["Book", "Book"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Find Book", "Pick Book"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Book grabbed but agent not sitting", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__L03.jpg"}, {"id": "Direct__L04", "method": "Direct", "task_id": "L04", "task_desc": "Watch TV \u2014 turn it on and sit on the sofa", "expected_objects": ["Television", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa", "MoveTo TV", "MoveTo TVStand"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV not turned on", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Direct__L04.jpg"}, {"id": "Direct__L05", "method": "Direct", "task_id": "L05", "task_desc": "Read a book \u2014 pick one up and sit on the sofa", "expected_objects": ["Book", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa", "Find Newspaper", "Pick Newspaper"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Book not picked up", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Chair|-01.86|+00.02|+01.04", "DiningTable|-02.27|-00.02|+01.42"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Direct__L05.jpg"}, {"id": "Direct__L06", "method": "Direct", "task_id": "L06", "task_desc": "Turn on the lamp and sit on the sofa", "expected_objects": ["FloorLamp", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan202", "plan": ["MoveTo Sofa", "MoveTo SideTable", "MoveTo SideTable", "MoveTo SideTable"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Lamp on and sitting", "final_states": {"FloorLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.50|+00.69|+00.51"]}}, "frame": "frames/Direct__L06.jpg"}, {"id": "Direct__L07", "method": "Direct", "task_id": "L07", "task_desc": "Clean the living room \u2014 pick up clutter and place items away", "expected_objects": ["Book", "RemoteControl", "Book"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan202", "plan": [], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Items placed", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-01.57|+00.00|+03.87"], "receptacleObjectIds": []}, "RemoteControl": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CoffeeTable|-01.73|+00.01|+02.36"], "receptacleObjectIds": []}}, "frame": "frames/Direct__L07.jpg"}, {"id": "Direct__L08", "method": "Direct", "task_id": "L08", "task_desc": "Set up for movie night: turn on TV, dim lamp, sit on sofa", "expected_objects": ["Television", "DeskLamp", "Sofa"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa", "MoveTo TV", "MoveTo TVStand", "MoveTo TV"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV on, lamp off, sitting", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "DeskLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["SideTable|-00.25|+00.00|+03.37"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Direct__L08.jpg"}, {"id": "Direct__B01", "method": "Direct", "task_id": "B01", "task_desc": "Turn off the bedroom light", "expected_objects": ["LightSwitch"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "Find LightSwitch", "TurnOff LightSwitch"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Light turned off", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__B01.jpg"}, {"id": "Direct__B02", "method": "Direct", "task_id": "B02", "task_desc": "Lie down on the bed", "expected_objects": ["Bed"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent lying on bed", "final_states": {"Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Direct__B02.jpg"}, {"id": "Direct__B03", "method": "Direct", "task_id": "B03", "task_desc": "Pick up the alarm clock", "expected_objects": ["AlarmClock"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Box", "MoveTo Box", "Find AlarmClock", "Pick AlarmClock"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock picked up", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Direct__B03.jpg"}, {"id": "Direct__B04", "method": "Direct", "task_id": "B04", "task_desc": "Go to sleep \u2014 turn off light and lie on the bed", "expected_objects": ["LightSwitch", "Bed"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "Find LightSwitch", "TurnOff LightSwitch", "MoveTo Bed", "LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent lying on bed", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Direct__B04.jpg"}, {"id": "Direct__B05", "method": "Direct", "task_id": "B05", "task_desc": "Set the alarm clock on the nightstand", "expected_objects": ["AlarmClock", "nightstand"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Box", "MoveTo Box", "MoveTo Box", "MoveTo Box"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock not interacted with", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}}, "frame": "frames/Direct__B05.jpg"}, {"id": "Direct__B06", "method": "Direct", "task_id": "B06", "task_desc": "Get clothes from the dresser", "expected_objects": ["dresser", "clothes"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan302", "plan": ["MoveTo Drawer", "MoveTo Drawer"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Dresser not opened", "final_states": {}, "frame": "frames/Direct__B06.jpg"}, {"id": "Direct__B07", "method": "Direct", "task_id": "B07", "task_desc": "Prepare for bed: set alarm, turn off light, lie down", "expected_objects": ["AlarmClock", "LightSwitch", "Bed"], "difficulty": "hard", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "Find AlarmClock", "MoveTo LightSwitch"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm set and lying down", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}, "LightSwitch": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Direct__B07.jpg"}, {"id": "SAGE__K01", "method": "SAGE", "task_id": "K01", "task_desc": "Make a cup of coffee using the coffee machine", "expected_objects": ["Mug", "CoffeeMachine"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "Find CoffeeMachine", "TurnOn CoffeeMachine"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Coffee machine on but mug not placed \u2014 coffee not brewed", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K01.jpg"}, {"id": "SAGE__K02", "method": "SAGE", "task_id": "K02", "task_desc": "Turn on the stove burner", "expected_objects": ["StoveBurner"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo StoveBurner", "Find StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Stove not turned on", "final_states": {"StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K02.jpg"}, {"id": "SAGE__K03", "method": "SAGE", "task_id": "K03", "task_desc": "Open the fridge and retrieve a tomato", "expected_objects": ["Fridge", "Tomato"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Fridge", "Find Tomato", "Find Tomato", "Pick Tomato"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Item retrieved from fridge", "final_states": {"Fridge": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Egg|-02.04|+00.81|+01.24"]}, "Tomato": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K03.jpg"}, {"id": "SAGE__K04", "method": "SAGE", "task_id": "K04", "task_desc": "Boil water in a pot on the stove", "expected_objects": ["Pot", "Faucet", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo Pot", "MoveTo Faucet", "MoveTo StoveBurner", "MoveTo CounterTop", "Find Pot", "Pick Pot", "MoveTo StoveBurner", "Place StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Stove not turned on", "final_states": {"Pot": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|+00.00|+00.95|-01.51", "StoveBurner|+01.77|+00.90|+00.60", "StoveBurner|+01.98|+00.90|+00.38", "StoveBurner|+01.77|+00.90|+00.38"], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K04.jpg"}, {"id": "SAGE__K05", "method": "SAGE", "task_id": "K05", "task_desc": "Cook an egg \u2014 place it in a pan on the stove", "expected_objects": ["Egg", "Pan", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan3", "plan": ["MoveTo Pan", "MoveTo Egg", "Find Egg", "Pick Egg", "MoveTo StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Egg not placed in pan", "final_states": {"Egg": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Pan": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|-01.46|+00.78|-02.00"], "receptacleObjectIds": []}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K05.jpg"}, {"id": "SAGE__K06", "method": "SAGE", "task_id": "K06", "task_desc": "Wash an apple at the sink", "expected_objects": ["Apple", "Sink", "Faucet"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Apple", "Find Apple", "Pick Apple", "MoveTo Sink", "Find Faucet", "TurnOn Faucet", "TurnOff Faucet"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Apple grabbed and faucet turned on (likely washed)", "final_states": {"Apple": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Sink": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K06.jpg"}, {"id": "SAGE__K07", "method": "SAGE", "task_id": "K07", "task_desc": "Heat food in the microwave", "expected_objects": ["Plate", "Microwave"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Microwave", "Find Microwave", "Open Microwave", "Close Microwave", "TurnOn Microwave"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Microwave on but food not placed inside", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|+00.72|+02.02|-02.46"], "receptacleObjectIds": []}, "Microwave": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K07.jpg"}, {"id": "SAGE__K08", "method": "SAGE", "task_id": "K08", "task_desc": "Set up the dining table with plates and cups", "expected_objects": ["Plate", "Cup", "DiningTable"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan4", "plan": ["MoveTo Cabinet", "Find Cabinet", "Open Cabinet", "MoveTo Cabinet", "Open Cabinet", "Find Plate", "Pick Plate", "MoveTo DiningTable", "Place DiningTable", "MoveTo Cabinet", "Find Cabinet", "Close Cabinet", "MoveTo Cabinet", "Open Cabinet", "Find Cup", "Pick Cup", "MoveTo DiningTable", "Place DiningTable"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Plate and cup placed on dining table", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["DiningTable|-00.62|+00.02|+02.49"], "receptacleObjectIds": []}, "Cup": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["DiningTable|-00.62|+00.02|+02.49"], "receptacleObjectIds": []}, "DiningTable": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["CoffeeMachine|-00.15|+01.04|+03.19", "Mug|-00.38|+01.09|+03.19", "Toaster|-00.23|+01.04|+02.87", "Pan|-00.27|+01.04|+02.56", "Plate|-01.19|+00.92|+00.40", "Bowl|-00.50|+01.04|+02.22", "Tomato|-00.75|+01.08|+02.40", "Bread|-00.18|+01.12|+01.89", "Spoon|-00.43|+01.04|+01.90", "Fork|-00.46|+01.04|+01.78", "Cup|-01.58|+00.92|+00.34"]}}, "frame": "frames/SAGE__K08.jpg"}, {"id": "SAGE__K09", "method": "SAGE", "task_id": "K09", "task_desc": "Prepare a coffee and place it on the dining table", "expected_objects": ["Mug", "CoffeeMachine", "dining_table"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "Find CoffeeMachine", "TurnOn CoffeeMachine", "MoveTo Mug", "Find Mug", "Pick Mug"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Coffee machine on but mug not placed \u2014 coffee not brewed", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/SAGE__K09.jpg"}, {"id": "SAGE__L01", "method": "SAGE", "task_id": "L01", "task_desc": "Turn on the television", "expected_objects": ["Television"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Television"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV not turned on", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}}, "frame": "frames/SAGE__L01.jpg"}, {"id": "SAGE__L02", "method": "SAGE", "task_id": "L02", "task_desc": "Sit on the sofa", "expected_objects": ["Sofa"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent sat on sofa", "final_states": {"Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/SAGE__L02.jpg"}, {"id": "SAGE__L03", "method": "SAGE", "task_id": "L03", "task_desc": "Pick up a book from the bookshelf", "expected_objects": ["Book", "Book"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Bookshelf", "Find Book", "Pick Book"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Book grabbed but agent not sitting", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__L03.jpg"}, {"id": "SAGE__L04", "method": "SAGE", "task_id": "L04", "task_desc": "Watch TV \u2014 turn it on and sit on the sofa", "expected_objects": ["Television", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Television", "Find Television", "TurnOn Television", "MoveTo Sofa", "Sit Sofa"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "TV on and agent sitting", "final_states": {"Television": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/SAGE__L04.jpg"}, {"id": "SAGE__L05", "method": "SAGE", "task_id": "L05", "task_desc": "Read a book \u2014 pick one up and sit on the sofa", "expected_objects": ["Book", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "MoveTo Book", "Find Book", "Pick Book", "MoveTo Sofa", "Sit Sofa"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Book grabbed and agent sitting", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/SAGE__L05.jpg"}, {"id": "SAGE__L06", "method": "SAGE", "task_id": "L06", "task_desc": "Turn on the lamp and sit on the sofa", "expected_objects": ["FloorLamp", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan202", "plan": ["MoveTo FloorLamp", "Find FloorLamp"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Lamp on and sitting", "final_states": {"FloorLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.50|+00.69|+00.51"]}}, "frame": "frames/SAGE__L06.jpg"}, {"id": "SAGE__L07", "method": "SAGE", "task_id": "L07", "task_desc": "Clean the living room \u2014 pick up clutter and place items away", "expected_objects": ["Book", "RemoteControl", "Book"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan202", "plan": ["MoveTo RemoteControl", "Find RemoteControl", "Pick RemoteControl", "MoveTo Sofa", "Place Sofa", "MoveTo Pillow", "Find Pillow", "Pick Pillow", "MoveTo Sofa", "Place Sofa", "MoveTo Box", "Find Pillow", "Pick Pillow", "MoveTo Box", "MoveTo Box", "Find Box"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Items placed", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-01.57|+00.00|+03.87"], "receptacleObjectIds": []}, "RemoteControl": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Sofa|-01.14|00.00|+00.52"], "receptacleObjectIds": []}}, "frame": "frames/SAGE__L07.jpg"}, {"id": "SAGE__L08", "method": "SAGE", "task_id": "L08", "task_desc": "Set up for movie night: turn on TV, dim lamp, sit on sofa", "expected_objects": ["Television", "DeskLamp", "Sofa"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Television", "Find Television", "TurnOn Television", "MoveTo Floor", "Find DeskLamp", "MoveTo Sofa", "Sit Sofa"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV on, lamp off, sitting", "final_states": {"Television": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "DeskLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["SideTable|-00.25|+00.00|+03.37"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/SAGE__L08.jpg"}, {"id": "SAGE__B01", "method": "SAGE", "task_id": "B01", "task_desc": "Turn off the bedroom light", "expected_objects": ["LightSwitch"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Light turned off", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__B01.jpg"}, {"id": "SAGE__B02", "method": "SAGE", "task_id": "B02", "task_desc": "Lie down on the bed", "expected_objects": ["Bed"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Bed", "LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent lying on bed", "final_states": {"Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/SAGE__B02.jpg"}, {"id": "SAGE__B03", "method": "SAGE", "task_id": "B03", "task_desc": "Pick up the alarm clock", "expected_objects": ["AlarmClock"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Box", "Find AlarmClock", "Pick AlarmClock"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock picked up", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/SAGE__B03.jpg"}, {"id": "SAGE__B04", "method": "SAGE", "task_id": "B04", "task_desc": "Go to sleep \u2014 turn off light and lie on the bed", "expected_objects": ["LightSwitch", "Bed"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "MoveTo LightSwitch", "MoveTo LightSwitch", "MoveTo Bed", "LieOn Bed", "MoveTo Bed", "LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent lying on bed", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/SAGE__B04.jpg"}, {"id": "SAGE__B05", "method": "SAGE", "task_id": "B05", "task_desc": "Set the alarm clock on the nightstand", "expected_objects": ["AlarmClock", "nightstand"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": [], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock not interacted with", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}}, "frame": "frames/SAGE__B05.jpg"}, {"id": "SAGE__B06", "method": "SAGE", "task_id": "B06", "task_desc": "Get clothes from the dresser", "expected_objects": ["dresser", "clothes"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan302", "plan": ["MoveTo Drawer"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Dresser not opened", "final_states": {}, "frame": "frames/SAGE__B06.jpg"}, {"id": "SAGE__B07", "method": "SAGE", "task_id": "B07", "task_desc": "Prepare for bed: set alarm, turn off light, lie down", "expected_objects": ["AlarmClock", "LightSwitch", "Bed"], "difficulty": "hard", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Box", "Find AlarmClock", "Pick AlarmClock", "MoveTo BedsideTable", "Place BedsideTable", "MoveTo LightSwitch", "MoveTo LightSwitch", "MoveTo LightSwitch", "MoveTo Bed", "LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Alarm set and lying down", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Bed|-00.64|+00.01|+00.87"], "receptacleObjectIds": []}, "LightSwitch": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["AlarmClock|-01.28|+01.24|-00.47", "Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "CellPhone|-00.26|+00.56|+00.52", "Laptop|-00.50|+00.56|+00.29"]}}, "frame": "frames/SAGE__B07.jpg"}, {"id": "Hierarchical__K01", "method": "Hierarchical", "task_id": "K01", "task_desc": "Make a cup of coffee using the coffee machine", "expected_objects": ["Mug", "CoffeeMachine"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "Find CoffeeMachine", "MoveTo CoffeeMachine", "MoveTo CoffeeMachine", "MoveTo CoffeeMachine"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Neither mug placed nor machine turned on", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K01.jpg"}, {"id": "Hierarchical__K02", "method": "Hierarchical", "task_id": "K02", "task_desc": "Turn on the stove burner", "expected_objects": ["StoveBurner"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo CounterTop", "Find StoveBurner", "Find StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Stove not turned on", "final_states": {"StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K02.jpg"}, {"id": "Hierarchical__K03", "method": "Hierarchical", "task_id": "K03", "task_desc": "Open the fridge and retrieve a tomato", "expected_objects": ["Fridge", "Tomato"], "difficulty": "easy", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Fridge", "Find Tomato", "Find Tomato"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "No item grabbed from fridge", "final_states": {"Fridge": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Egg|-02.04|+00.81|+01.24"]}, "Tomato": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-00.08|+01.15|00.00"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K03.jpg"}, {"id": "Hierarchical__K04", "method": "Hierarchical", "task_id": "K04", "task_desc": "Boil water in a pot on the stove", "expected_objects": ["Pot", "Faucet", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan2", "plan": ["MoveTo CounterTop", "Find Pot", "Pick Pot", "MoveTo Stove", "MoveTo StoveBurner", "Place StoveBurner", "Find Pot", "MoveTo Stove", "MoveTo StoveBurner", "MoveTo StoveKnob", "Find StoveKnob", "TurnOn StoveKnob"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Pot on stove and burner on", "final_states": {"Pot": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|+00.00|+00.95|-01.51", "StoveBurner|+01.77|+00.90|+00.60", "StoveBurner|+01.98|+00.90|+00.38", "StoveBurner|+01.77|+00.90|+00.38"], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K04.jpg"}, {"id": "Hierarchical__K05", "method": "Hierarchical", "task_id": "K05", "task_desc": "Cook an egg \u2014 place it in a pan on the stove", "expected_objects": ["Egg", "Pan", "StoveBurner"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan3", "plan": ["MoveTo StoveKnob", "MoveTo CounterTop", "Find Egg", "Pick Egg", "MoveTo Pan", "MoveTo Pan", "Place Pan", "MoveTo StoveKnob", "MoveTo CounterTop", "Find Pan", "MoveTo StoveBurner", "Find StoveBurner"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Egg in pan but stove not on", "final_states": {"Egg": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|-01.46|+00.78|-02.00", "Pan|-01.88|+00.33|-02.04"], "receptacleObjectIds": []}, "Pan": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|-01.46|+00.78|-02.00"], "receptacleObjectIds": ["Egg|-01.57|+01.36|-01.05"]}, "StoveBurner": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K05.jpg"}, {"id": "Hierarchical__K06", "method": "Hierarchical", "task_id": "K06", "task_desc": "Wash an apple at the sink", "expected_objects": ["Apple", "Sink", "Faucet"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Apple", "Find Apple", "Find Apple", "MoveTo Sink", "Find Apple", "Pick Apple", "MoveTo Sink", "MoveTo SinkBasin", "Find SoapBottle", "Find SoapBottle"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Apple not washed", "final_states": {"Apple": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Sink": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Faucet": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K06.jpg"}, {"id": "Hierarchical__K07", "method": "Hierarchical", "task_id": "K07", "task_desc": "Heat food in the microwave", "expected_objects": ["Plate", "Microwave"], "difficulty": "medium", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo Fridge", "MoveTo CoffeeMachine", "Find Microwave", "Open Microwave", "Find Apple", "Pick Apple", "MoveTo Microwave"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Microwave not activated", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Cabinet|+00.72|+02.02|-02.46"], "receptacleObjectIds": []}, "Microwave": {"isOpen": true, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K07.jpg"}, {"id": "Hierarchical__K08", "method": "Hierarchical", "task_id": "K08", "task_desc": "Set up the dining table with plates and cups", "expected_objects": ["Plate", "Cup", "DiningTable"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan4", "plan": ["MoveTo Drawer [closed, off] (0.7m)", "Find Plate", "Pick Plate", "MoveTo Drawer", "MoveTo Cabinet", "Find Cup", "MoveTo DiningTable", "Place DiningTable"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Plate placed but cup missing", "final_states": {"Plate": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["DiningTable|-00.62|+00.02|+02.49"], "receptacleObjectIds": []}, "Cup": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Sink|-01.39|+00.98|+00.44|SinkBasin"], "receptacleObjectIds": []}, "DiningTable": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["CoffeeMachine|-00.15|+01.04|+03.19", "Mug|-00.38|+01.09|+03.19", "Toaster|-00.23|+01.04|+02.87", "Pan|-00.27|+01.04|+02.56", "Bowl|-00.50|+01.04|+02.22", "Tomato|-00.75|+01.08|+02.40", "Bread|-00.18|+01.12|+01.89", "Spoon|-00.43|+01.04|+01.90", "Fork|-00.46|+01.04|+01.78", "Plate|-01.19|+00.92|+00.40"]}}, "frame": "frames/Hierarchical__K08.jpg"}, {"id": "Hierarchical__K09", "method": "Hierarchical", "task_id": "K09", "task_desc": "Prepare a coffee and place it on the dining table", "expected_objects": ["Mug", "CoffeeMachine", "dining_table"], "difficulty": "hard", "room": "kitchen", "scene": "FloorPlan1", "plan": ["MoveTo CoffeeMachine", "Find CoffeeMachine", "MoveTo CoffeeMachine", "MoveTo CoffeeMachine"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Neither mug placed nor machine turned on", "final_states": {"Mug": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}, "CoffeeMachine": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["CounterTop|-01.87|+00.95|-01.21"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__K09.jpg"}, {"id": "Hierarchical__L01", "method": "Hierarchical", "task_id": "L01", "task_desc": "Turn on the television", "expected_objects": ["Television"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa", "MoveTo Sofa", "Find Television"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV not turned on", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__L01.jpg"}, {"id": "Hierarchical__L03", "method": "Hierarchical", "task_id": "L03", "task_desc": "Pick up a book from the bookshelf", "expected_objects": ["Book", "Book"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Bookshelf", "MoveTo Sofa", "Find Book", "Pick Book"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Book grabbed but agent not sitting", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__L03.jpg"}, {"id": "Hierarchical__L04", "method": "Hierarchical", "task_id": "L04", "task_desc": "Watch TV \u2014 turn it on and sit on the sofa", "expected_objects": ["Television", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV not turned on", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Hierarchical__L04.jpg"}, {"id": "Hierarchical__L05", "method": "Hierarchical", "task_id": "L05", "task_desc": "Read a book \u2014 pick one up and sit on the sofa", "expected_objects": ["Book", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa", "Sit Sofa", "MoveTo Sofa", "Find Book", "Pick Book"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Book grabbed and agent sitting", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Hierarchical__L05.jpg"}, {"id": "Hierarchical__L06", "method": "Hierarchical", "task_id": "L06", "task_desc": "Turn on the lamp and sit on the sofa", "expected_objects": ["FloorLamp", "Sofa"], "difficulty": "medium", "room": "living_room", "scene": "FloorPlan202", "plan": ["MoveTo Sofa", "MoveTo SideTable", "MoveTo SideTable", "MoveTo SideTable"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Lamp on and sitting", "final_states": {"FloorLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.50|+00.69|+00.51"]}}, "frame": "frames/Hierarchical__L06.jpg"}, {"id": "Hierarchical__L07", "method": "Hierarchical", "task_id": "L07", "task_desc": "Clean the living room \u2014 pick up clutter and place items away", "expected_objects": ["Book", "RemoteControl", "Book"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan202", "plan": ["MoveTo CoffeeTable", "Find RemoteControl", "Pick RemoteControl", "MoveTo Sofa", "Place Sofa", "MoveTo CoffeeTable", "Find Pillow", "Pick Pillow", "MoveTo CoffeeTable", "Find Book", "MoveTo CoffeeTable", "Place CoffeeTable", "MoveTo CoffeeTable", "Pick Book", "MoveTo CoffeeTable"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Items placed", "final_states": {"Book": {"isOpen": false, "isToggled": false, "isPickedUp": true, "parentReceptacles": [], "receptacleObjectIds": []}, "RemoteControl": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Sofa|-01.14|00.00|+00.52"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__L07.jpg"}, {"id": "Hierarchical__L08", "method": "Hierarchical", "task_id": "L08", "task_desc": "Set up for movie night: turn on TV, dim lamp, sit on sofa", "expected_objects": ["Television", "DeskLamp", "Sofa"], "difficulty": "hard", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "TV on, lamp off, sitting", "final_states": {"Television": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["TVStand|-02.39|+00.01|+06.30"], "receptacleObjectIds": []}, "DeskLamp": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": ["SideTable|-00.25|+00.00|+03.37"], "receptacleObjectIds": []}, "Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Hierarchical__L08.jpg"}, {"id": "Hierarchical__B01", "method": "Hierarchical", "task_id": "B01", "task_desc": "Turn off the bedroom light", "expected_objects": ["LightSwitch"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "Find LightSwitch", "Find LightSwitch", "TurnOff LightSwitch"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Light turned off", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__B01.jpg"}, {"id": "Hierarchical__B02", "method": "Hierarchical", "task_id": "B02", "task_desc": "Lie down on the bed", "expected_objects": ["Bed"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Bed"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Agent did not lie down", "final_states": {"Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Hierarchical__B02.jpg"}, {"id": "Hierarchical__B03", "method": "Hierarchical", "task_id": "B03", "task_desc": "Pick up the alarm clock", "expected_objects": ["AlarmClock"], "difficulty": "easy", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Box", "Find AlarmClock"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock not interacted with", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__B03.jpg"}, {"id": "Hierarchical__B04", "method": "Hierarchical", "task_id": "B04", "task_desc": "Go to sleep \u2014 turn off light and lie on the bed", "expected_objects": ["LightSwitch", "Bed"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch", "Find LightSwitch", "Find LightSwitch", "TurnOff LightSwitch", "MoveTo Bed", "LieOn Bed"], "auto_task_success": 1.0, "goal_method": "goal_condition", "goal_reason": "Agent lying on bed", "final_states": {"LightSwitch": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Hierarchical__B04.jpg"}, {"id": "Hierarchical__B05", "method": "Hierarchical", "task_id": "B05", "task_desc": "Set the alarm clock on the nightstand", "expected_objects": ["AlarmClock", "nightstand"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo Bedroom", "Find AlarmClock", "MoveTo Bed"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm clock not interacted with", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}}, "frame": "frames/Hierarchical__B05.jpg"}, {"id": "Hierarchical__B06", "method": "Hierarchical", "task_id": "B06", "task_desc": "Get clothes from the dresser", "expected_objects": ["dresser", "clothes"], "difficulty": "medium", "room": "bedroom", "scene": "FloorPlan302", "plan": ["MoveTo Drawer"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Dresser not opened", "final_states": {}, "frame": "frames/Hierarchical__B06.jpg"}, {"id": "Hierarchical__B07", "method": "Hierarchical", "task_id": "B07", "task_desc": "Prepare for bed: set alarm, turn off light, lie down", "expected_objects": ["AlarmClock", "LightSwitch", "Bed"], "difficulty": "hard", "room": "bedroom", "scene": "FloorPlan301", "plan": ["MoveTo LightSwitch"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Alarm set and lying down", "final_states": {"AlarmClock": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Dresser|-01.33|+00.01|-00.75"], "receptacleObjectIds": []}, "LightSwitch": {"isOpen": false, "isToggled": true, "isPickedUp": false, "parentReceptacles": [], "receptacleObjectIds": []}, "Bed": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.00|+00.00"], "receptacleObjectIds": ["Pillow|-00.63|+00.63|+01.61", "Book|-00.90|+00.56|+01.18", "Laptop|-00.50|+00.56|+00.29", "CellPhone|-00.26|+00.56|+00.52"]}}, "frame": "frames/Hierarchical__B07.jpg"}, {"id": "Hierarchical__L02", "method": "Hierarchical", "task_id": "L02", "task_desc": "Sit on the sofa", "expected_objects": ["Sofa"], "difficulty": "easy", "room": "living_room", "scene": "FloorPlan201", "plan": ["MoveTo Sofa"], "auto_task_success": 0.0, "goal_method": "goal_condition", "goal_reason": "Agent sat on sofa", "final_states": {"Sofa": {"isOpen": false, "isToggled": false, "isPickedUp": false, "parentReceptacles": ["Floor|+00.00|+00.38|+00.00"], "receptacleObjectIds": ["Pillow|-03.15|+00.68|+03.42"]}}, "frame": "frames/Hierarchical__L02.jpg"}];
+if (!Array.isArray(ITEMS)) { ITEMS = []; }
+
+// ---- Deterministic shuffle: FNV-1a hash of id with a fixed seed ----
+var SEED = 0x9e3779b1; // fixed seed -> same order for every rater
+function fnv1a(str) {
+  var h = (2166136261 ^ SEED) >>> 0;
+  for (var i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+  }
+  return h >>> 0;
+}
+var ORDER = ITEMS.slice().sort(function (a, b) {
+  var ha = fnv1a(String(a.id)), hb = fnv1a(String(b.id));
+  if (ha !== hb) return ha - hb;
+  return String(a.id) < String(b.id) ? -1 : 1; // stable tie-break
+});
+
+// ---- localStorage (keyed per rater) ----
+function storeKey(rater) { return "sage_human_eval__" + rater; }
+function loadJudgments(rater) {
+  try { return JSON.parse(localStorage.getItem(storeKey(rater))) || {}; }
+  catch (e) { return {}; }
+}
+function saveJudgments(rater, data) {
+  try { localStorage.setItem(storeKey(rater), JSON.stringify(data)); }
+  catch (e) { /* best-effort */ }
+}
+function loadName(rater) {
+  try { return localStorage.getItem(storeKey(rater) + "__name") || ""; }
+  catch (e) { return ""; }
+}
+function saveName(rater, name) {
+  try { localStorage.setItem(storeKey(rater) + "__name", name || ""); }
+  catch (e) { /* best-effort */ }
+}
+
+// ---- escaping ----
+function esc(s) {
+  s = (s === null || s === undefined) ? "" : String(s);
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+// ---- render final_states into a readable line list ----
+function renderStates(fs) {
+  if (!fs || typeof fs !== "object") return "<span class='states st'>(none)</span>";
+  var keys = Object.keys(fs);
+  if (!keys.length) return "<span class='states st'>(none)</span>";
+  var rows = keys.map(function (objType) {
+    var st = fs[objType] || {};
+    var parts = [];
+    if (st.isOpen !== undefined && st.isOpen !== null)
+      parts.push("isOpen=" + st.isOpen);
+    if (st.isToggled !== undefined && st.isToggled !== null)
+      parts.push("isToggled=" + st.isToggled);
+    if (st.isPickedUp !== undefined && st.isPickedUp !== null)
+      parts.push("isPickedUp=" + st.isPickedUp);
+    if (st.parentReceptacles !== undefined && st.parentReceptacles !== null) {
+      var pr = st.parentReceptacles;
+      if (Array.isArray(pr)) pr = "[" + pr.join(", ") + "]";
+      parts.push("parentReceptacles=" + pr);
+    }
+    // include any other primitive fields not already shown
+    Object.keys(st).forEach(function (k) {
+      if (["isOpen", "isToggled", "isPickedUp", "parentReceptacles"].indexOf(k) >= 0) return;
+      var v = st[k];
+      if (v === null || v === undefined) return;
+      if (typeof v === "object") {
+        if (Array.isArray(v)) parts.push(k + "=[" + v.join(", ") + "]");
+        return;
+      }
+      parts.push(k + "=" + v);
+    });
+    return "<div class='st'><span class='stobj'>" + esc(objType) + "</span>: " +
+           esc(parts.join("; ")) + "</div>";
+  });
+  return rows.join("");
+}
+
+function renderGoal(objs) {
+  if (!Array.isArray(objs) || !objs.length) return "<span class='obj'>(none)</span>";
+  return objs.map(function (o) { return "<span class='obj'>" + esc(o) + "</span>"; }).join("");
+}
+
+function renderPlan(plan) {
+  if (!Array.isArray(plan) || !plan.length) return "<em>(empty plan)</em>";
+  return "<ol class='plan'>" + plan.map(function (s) {
+    return "<li>" + esc(s) + "</li>";
+  }).join("") + "</ol>";
+}
+
+// ---- state ----
+var curRater = "rater1";
+var judgments = {};
+
+var cardsEl = document.getElementById("cards");
+var progEl = document.getElementById("prog");
+var raterSel = document.getElementById("raterSel");
+var raterName = document.getElementById("raterName");
+
+function judgedCount() {
+  var n = 0;
+  ORDER.forEach(function (it) {
+    var j = judgments[it.id];
+    if (j && j.judgment !== undefined && j.judgment !== null && j.judgment !== "") n++;
+  });
+  return n;
+}
+
+function updateProgress() {
+  progEl.innerHTML = "judged <b>" + judgedCount() + "</b> / " + ORDER.length;
+}
+
+function markCardDone(idStr, done) {
+  var card = document.getElementById("card-" + idStr);
+  if (card) card.classList.toggle("done", !!done);
+}
+
+function onJudgmentChange(itemId, value) {
+  if (!judgments[itemId]) judgments[itemId] = {};
+  judgments[itemId].judgment = value;
+  saveJudgments(curRater, judgments);
+  markCardDone(cssId(itemId), true);
+  updateProgress();
+}
+
+function onNoteChange(itemId, note) {
+  if (!judgments[itemId]) judgments[itemId] = {};
+  judgments[itemId].note = note;
+  saveJudgments(curRater, judgments);
+}
+
+function cssId(id) { return String(id).replace(/[^A-Za-z0-9_-]/g, "_"); }
+
+function renderCards() {
+  if (!ORDER.length) {
+    cardsEl.innerHTML = "<div class='empty'>No items to judge.</div>";
+    updateProgress();
+    return;
+  }
+  var html = ORDER.map(function (it, i) {
+    var cid = cssId(it.id);
+    var j = judgments[it.id] || {};
+    var frame = it.frame;
+    var frameHtml;
+    if (frame && String(frame).trim().length) {
+      frameHtml = "<img loading='lazy' src='" + esc(frame) + "' alt='final frame'>";
+    } else {
+      frameHtml = "<div class='noframe'>[no frame]</div>";
+    }
+    // Auto-checker verdict is deliberately HIDDEN from raters so the human
+    // judgment stays independent of the auto signal; the two are reconciled
+    // offline (auto-vs-human agreement / Cohen's kappa). Do not surface
+    // auto_task_success or goal_reason in the rater UI.
+    var auto = "";
+
+    function radio(val, label) {
+      var checked = (String(j.judgment) === String(val)) ? " checked" : "";
+      return "<label class='opt'><input type='radio' name='j-" + cid + "' value='" +
+             val + "'" + checked + "> " + label + "</label>";
+    }
+
+    var noteVal = (j.note === undefined || j.note === null) ? "" : j.note;
+
+    return "" +
+      "<div class='card" + (j.judgment !== undefined && j.judgment !== null && j.judgment !== "" ? " done" : "") +
+        "' id='card-" + cid + "'>" +
+        "<div class='idx'>Item " + (i + 1) + " of " + ORDER.length + "</div>" +
+        "<div class='task'>" + esc(it.task_desc) + "</div>" +
+        "<div class='meta'>" +
+          "<span>difficulty: " + esc(it.difficulty) + "</span>" +
+          "<span>room: " + esc(it.room) + "</span>" +
+          "<span>scene: " + esc(it.scene) + "</span>" +
+        "</div>" +
+        "<div class='frame'>" + frameHtml + "</div>" +
+        "<div class='sect'><div class='h'>Goal (expected objects)</div>" +
+          "<div class='goal'>" + renderGoal(it.expected_objects) + "</div></div>" +
+        "<div class='sect'><div class='h'>Final states</div>" +
+          "<div class='states'>" + renderStates(it.final_states) + "</div></div>" +
+        "<div class='sect'><div class='h'>Executed plan</div>" +
+          renderPlan(it.plan) + "</div>" +
+        auto +
+        "<div class='judge'>" +
+          "<div class='opts'>" +
+            "<span class='h' style='margin-right:4px'>Goal achieved?</span>" +
+            radio("1", "1 &mdash; achieved") +
+            radio("0.5", "0.5 &mdash; partial") +
+            radio("0", "0 &mdash; not achieved") +
+          "</div>" +
+          "<div class='note'><input type='text' placeholder='note (optional)' " +
+            "id='note-" + cid + "' value=\"" + esc(noteVal) + "\"></div>" +
+        "</div>" +
+      "</div>";
+  }).join("");
+  cardsEl.innerHTML = html;
+
+  // wire events
+  ORDER.forEach(function (it) {
+    var cid = cssId(it.id);
+    var radios = document.getElementsByName("j-" + cid);
+    for (var r = 0; r < radios.length; r++) {
+      radios[r].addEventListener("change", (function (itemId) {
+        return function (ev) { onJudgmentChange(itemId, ev.target.value); };
+      })(it.id));
+    }
+    var noteEl = document.getElementById("note-" + cid);
+    if (noteEl) {
+      noteEl.addEventListener("input", (function (itemId) {
+        return function (ev) { onNoteChange(itemId, ev.target.value); };
+      })(it.id));
+    }
+  });
+
+  updateProgress();
+}
+
+function switchRater(rater) {
+  curRater = rater;
+  judgments = loadJudgments(curRater);
+  raterName.value = loadName(curRater);
+  renderCards();
+}
+
+// ---- exports ----
+function effectiveRaterId() {
+  var nm = (raterName.value || "").trim();
+  return nm ? (curRater + ":" + nm) : curRater;
+}
+
+function csvCell(s) {
+  s = (s === null || s === undefined) ? "" : String(s);
+  if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+  return s;
+}
+
+function buildCsv() {
+  var header = ["item_id", "task_id", "method", "rater", "judgment", "note"];
+  var lines = [header.join(",")];
+  var rid = effectiveRaterId();
+  ORDER.forEach(function (it) {
+    var j = judgments[it.id] || {};
+    lines.push([
+      csvCell(it.id), csvCell(it.task_id), csvCell(it.method), csvCell(rid),
+      csvCell(j.judgment === undefined ? "" : j.judgment),
+      csvCell(j.note === undefined ? "" : j.note)
+    ].join(","));
+  });
+  return lines.join("\r\n") + "\r\n";
+}
+
+function buildJson() {
+  var rid = effectiveRaterId();
+  var rows = ORDER.map(function (it) {
+    var j = judgments[it.id] || {};
+    return {
+      item_id: it.id, task_id: it.task_id, method: it.method, rater: rid,
+      judgment: (j.judgment === undefined ? null : j.judgment),
+      note: (j.note === undefined ? "" : j.note)
+    };
+  });
+  return JSON.stringify({ rater: rid, n: ORDER.length, judged: judgedCount(), rows: rows }, null, 2);
+}
+
+function download(filename, text, mime) {
+  var blob = new Blob([text], { type: mime });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+}
+
+// ---- init ----
+raterSel.addEventListener("change", function () { switchRater(raterSel.value); });
+raterName.addEventListener("input", function () { saveName(curRater, raterName.value); });
+document.getElementById("dlCsv").addEventListener("click", function () {
+  download("sage_human_eval_" + effectiveRaterId().replace(/[^A-Za-z0-9_.-]/g, "_") + ".csv",
+           buildCsv(), "text/csv;charset=utf-8");
+});
+document.getElementById("dlJson").addEventListener("click", function () {
+  download("sage_human_eval_" + effectiveRaterId().replace(/[^A-Za-z0-9_.-]/g, "_") + ".json",
+           buildJson(), "application/json;charset=utf-8");
+});
+
+switchRater("rater1");
+</script>
+</body>
+</html>

@@ -1,0 +1,1968 @@
+{
+  "version": "1.0",
+  "grounded": true,
+  "gt_source": "simulator_execution",
+  "candidate_source": "manual",
+  "generated": "2026-03-19T16:12:06",
+  "samples": [
+    {
+      "task_id": "K01",
+      "task_desc": "Make a cup of coffee using the coffee machine",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Mug",
+          "target": "",
+          "reason": "Move to the mug"
+        },
+        {
+          "action": "Grab",
+          "object": "Mug",
+          "target": "",
+          "reason": "Pick up the mug"
+        },
+        {
+          "action": "Navigate",
+          "object": "CoffeeMachine",
+          "target": "",
+          "reason": "Move to the coffee machine"
+        },
+        {
+          "action": "TurnOn",
+          "object": "CoffeeMachine",
+          "target": "",
+          "reason": "Start brewing"
+        }
+      ],
+      "expected_objects": [
+        "Mug",
+        "CoffeeMachine"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 5,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.5,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:05:42",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K02",
+      "task_desc": "Turn on the stove burner",
+      "room": "kitchen",
+      "scene": "FloorPlan2",
+      "obs": "Location: (-1.00, 2.00), facing 180°\nHolding: nothing\nNearby objects:\n  - CellPhone [closed, off] (1.0m)\n  - GarbageCan [closed, off] (1.4m)\n  - Potato [closed, off] (1.5m)\n  - Chair [closed, off] (1.5m)\n  - Bowl [closed, off] (1.6m)\n  - CounterTop [closed, off] (1.8m)\n  - LightSwitch [closed, on] (1.9m)",
+      "visible_objects": [
+        "Bowl",
+        "CellPhone",
+        "CounterTop",
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "StoveBurner",
+          "target": "",
+          "reason": "Move to the stove"
+        }
+      ],
+      "expected_objects": [
+        "StoveBurner"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 1,
+        "task_success": true,
+        "step_success_rate": 0.333,
+        "total_reward": 1.0,
+        "grounded_at": "2026-03-19T16:05:50",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K03",
+      "task_desc": "Open the fridge and retrieve a tomato",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Move to the fridge"
+        },
+        {
+          "action": "Open",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Open fridge door"
+        },
+        {
+          "action": "Grab",
+          "object": "Tomato",
+          "target": "",
+          "reason": "Pick up the tomato"
+        }
+      ],
+      "expected_objects": [
+        "Fridge",
+        "Tomato"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.6,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:05:57",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K04",
+      "task_desc": "Boil water in a pot on the stove",
+      "room": "kitchen",
+      "scene": "FloorPlan2",
+      "obs": "Location: (-1.00, 2.00), facing 180°\nHolding: nothing\nNearby objects:\n  - CellPhone [closed, off] (1.0m)\n  - GarbageCan [closed, off] (1.4m)\n  - Potato [closed, off] (1.5m)\n  - Chair [closed, off] (1.5m)\n  - Bowl [closed, off] (1.6m)\n  - CounterTop [closed, off] (1.8m)\n  - LightSwitch [closed, on] (1.9m)",
+      "visible_objects": [
+        "Bowl",
+        "CellPhone",
+        "CounterTop",
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pot",
+          "target": "",
+          "reason": "Move to the pot"
+        },
+        {
+          "action": "Grab",
+          "object": "Pot",
+          "target": "",
+          "reason": "Pick up the pot"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Fill pot with water"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Stop water"
+        },
+        {
+          "action": "Navigate",
+          "object": "StoveBurner",
+          "target": "",
+          "reason": "Move to the stove"
+        }
+      ],
+      "expected_objects": [
+        "Pot",
+        "Faucet",
+        "StoveBurner"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 3,
+        "failure_reason": "Faucet not reachable from current position"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 8,
+        "executed_steps": 5,
+        "task_success": true,
+        "step_success_rate": 0.385,
+        "total_reward": 5.0,
+        "grounded_at": "2026-03-19T16:06:08",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K05",
+      "task_desc": "Cook an egg — place it in a pan on the stove",
+      "room": "kitchen",
+      "scene": "FloorPlan3",
+      "obs": "Location: (0.00, -1.75), facing 270°\nHolding: nothing\nNearby objects:\n  - Cabinet [closed, off] (0.7m)\n  - Knife [closed, off] (0.9m)\n  - Spoon [closed, off] (0.9m)\n  - Fork [closed, off] (1.0m)\n  - StoveKnob [closed, off] (1.0m)\n  - StoveKnob [closed, off] (1.1m)\n  - Microwave [closed, off] (1.1m)\n  - Cup [closed, off] (1.1m)",
+      "visible_objects": [
+        "Cabinet",
+        "CounterTop",
+        "Drawer",
+        "Pot",
+        "StoveBurner"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Egg",
+          "target": "",
+          "reason": "Move to the egg"
+        },
+        {
+          "action": "Grab",
+          "object": "Egg",
+          "target": "",
+          "reason": "Pick up the egg"
+        },
+        {
+          "action": "Navigate",
+          "object": "StoveBurner",
+          "target": "",
+          "reason": "Go to stove"
+        }
+      ],
+      "expected_objects": [
+        "Egg",
+        "Pan",
+        "StoveBurner"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.273,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:06:18",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K06",
+      "task_desc": "Wash an apple at the sink",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Apple",
+          "target": "",
+          "reason": "Move to the apple"
+        },
+        {
+          "action": "Grab",
+          "object": "Apple",
+          "target": "",
+          "reason": "Pick up the apple"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to the sink"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn on water"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn off water"
+        }
+      ],
+      "expected_objects": [
+        "Apple",
+        "Sink",
+        "Faucet"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 5,
+        "task_success": true,
+        "step_success_rate": 0.714,
+        "total_reward": 5.0,
+        "grounded_at": "2026-03-19T16:06:28",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K07",
+      "task_desc": "Heat food in the microwave",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Move to the microwave"
+        },
+        {
+          "action": "Open",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Open microwave door"
+        },
+        {
+          "action": "Close",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Close the door"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Start heating"
+        }
+      ],
+      "expected_objects": [
+        "Plate",
+        "Microwave"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 2,
+        "failure_reason": "Microwave door is already open"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 7,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.333,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:06:39",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K08",
+      "task_desc": "Set up the dining table with plates and cups",
+      "room": "kitchen",
+      "scene": "FloorPlan4",
+      "obs": "Location: (-2.00, 1.25), facing 270°\nHolding: nothing\nNearby objects:\n  - Drawer [closed, off] (0.7m)\n  - Drawer [closed, off] (0.7m)\n  - Cabinet [closed, off] (0.8m)\n  - Drawer [closed, off] (0.8m)\n  - Ladle [closed, off] (0.8m)\n  - Drawer [closed, off] (0.9m)\n  - ButterKnife [closed, off] (0.9m)\n  - Drawer [closed, off] (0.9m)",
+      "visible_objects": [
+        "ButterKnife",
+        "CounterTop",
+        "Drawer",
+        "Floor",
+        "Fridge",
+        "Pot",
+        "StoveBurner",
+        "StoveKnob",
+        "Window"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Cabinet",
+          "target": "",
+          "reason": "Go to the cabinet"
+        },
+        {
+          "action": "Open",
+          "object": "Cabinet",
+          "target": "",
+          "reason": "Open cabinet"
+        },
+        {
+          "action": "Grab",
+          "object": "Plate",
+          "target": "",
+          "reason": "Take a plate"
+        },
+        {
+          "action": "Navigate",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Go to the table"
+        },
+        {
+          "action": "Navigate",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Return to the table"
+        },
+        {
+          "action": "Navigate",
+          "object": "Cabinet",
+          "target": "",
+          "reason": "Close cabinet"
+        },
+        {
+          "action": "Close",
+          "object": "Cabinet",
+          "target": "",
+          "reason": "Close the cabinet"
+        }
+      ],
+      "expected_objects": [
+        "Plate",
+        "Cup",
+        "DiningTable"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {
+        "at_step": 1,
+        "failure_reason": "Cabinet is locked"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 11,
+        "executed_steps": 7,
+        "task_success": true,
+        "step_success_rate": 0.389,
+        "total_reward": 7.0,
+        "grounded_at": "2026-03-19T16:06:53",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "K09",
+      "task_desc": "Prepare a coffee and place it on the dining table",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Mug",
+          "target": "",
+          "reason": "Go to mug"
+        },
+        {
+          "action": "Grab",
+          "object": "Mug",
+          "target": "",
+          "reason": "Pick up mug"
+        },
+        {
+          "action": "Navigate",
+          "object": "CoffeeMachine",
+          "target": "",
+          "reason": "Go to coffee machine"
+        },
+        {
+          "action": "TurnOn",
+          "object": "CoffeeMachine",
+          "target": "",
+          "reason": "Brew coffee"
+        }
+      ],
+      "expected_objects": [
+        "Mug",
+        "CoffeeMachine",
+        "dining_table"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 8,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.308,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:07:04",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L01",
+      "task_desc": "Turn on the television",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Television",
+          "target": "",
+          "reason": "Move to the TV"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Television",
+          "target": "",
+          "reason": "Switch TV on"
+        }
+      ],
+      "expected_objects": [
+        "Television"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:07:11",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L02",
+      "task_desc": "Sit on the sofa",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Move to the sofa"
+        },
+        {
+          "action": "Sit",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Sit down"
+        }
+      ],
+      "expected_objects": [
+        "Sofa"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:07:16",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L03",
+      "task_desc": "Pick up a book from the bookshelf",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Book",
+          "target": "",
+          "reason": "Go to bookshelf"
+        },
+        {
+          "action": "Grab",
+          "object": "Book",
+          "target": "",
+          "reason": "Pick up a book"
+        }
+      ],
+      "expected_objects": [
+        "Book",
+        "Book"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:07:22",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L04",
+      "task_desc": "Watch TV — turn it on and sit on the sofa",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Television",
+          "target": "",
+          "reason": "Move to TV"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Television",
+          "target": "",
+          "reason": "Turn TV on"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Move to sofa"
+        },
+        {
+          "action": "Sit",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Sit down to watch"
+        }
+      ],
+      "expected_objects": [
+        "Television",
+        "Sofa"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:07:29",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L05",
+      "task_desc": "Read a book — pick one up and sit on the sofa",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Book",
+          "target": "",
+          "reason": "Go to bookshelf"
+        },
+        {
+          "action": "Grab",
+          "object": "Book",
+          "target": "",
+          "reason": "Pick up a book"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Go to the sofa"
+        },
+        {
+          "action": "Sit",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Sit to read"
+        }
+      ],
+      "expected_objects": [
+        "Book",
+        "Sofa"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 1,
+        "failure_reason": "Book out of reach from current position"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:07:37",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L06",
+      "task_desc": "Turn on the lamp and sit on the sofa",
+      "room": "living_room",
+      "scene": "FloorPlan202",
+      "obs": "Location: (-0.50, 1.75), facing 270°\nHolding: nothing\nNearby objects:\n  - RemoteControl [closed, off] (1.0m)\n  - Pillow [closed, off] (1.3m)\n  - Box [open, off] (1.5m)\n  - CoffeeTable [closed, off] (1.6m)\n  - Sofa [closed, off] (1.7m)\n  - HousePlant [closed, off] (1.7m)\n  - KeyChain [closed, off] (1.9m)\n  - CreditCard [closed, off] (1.9m)",
+      "visible_objects": [
+        "CoffeeTable",
+        "Floor",
+        "HousePlant",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "FloorLamp",
+          "target": "",
+          "reason": "Move to the lamp"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Go to the sofa"
+        },
+        {
+          "action": "Sit",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Sit down"
+        }
+      ],
+      "expected_objects": [
+        "FloorLamp",
+        "Sofa"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.6,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:07:44",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L07",
+      "task_desc": "Clean the living room — pick up clutter and place items away",
+      "room": "living_room",
+      "scene": "FloorPlan202",
+      "obs": "Location: (-0.50, 1.75), facing 270°\nHolding: nothing\nNearby objects:\n  - RemoteControl [closed, off] (1.0m)\n  - Pillow [closed, off] (1.3m)\n  - Box [open, off] (1.5m)\n  - CoffeeTable [closed, off] (1.6m)\n  - Sofa [closed, off] (1.7m)\n  - HousePlant [closed, off] (1.7m)\n  - KeyChain [closed, off] (1.9m)\n  - CreditCard [closed, off] (1.9m)",
+      "visible_objects": [
+        "CoffeeTable",
+        "Floor",
+        "HousePlant",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Book",
+          "target": "",
+          "reason": "Go to book on floor"
+        },
+        {
+          "action": "Grab",
+          "object": "Book",
+          "target": "",
+          "reason": "Pick up book"
+        },
+        {
+          "action": "Navigate",
+          "object": "RemoteControl",
+          "target": "",
+          "reason": "Go to remote on sofa"
+        },
+        {
+          "action": "Navigate",
+          "object": "CoffeeTable",
+          "target": "",
+          "reason": "Go to coffee table"
+        }
+      ],
+      "expected_objects": [
+        "Book",
+        "RemoteControl",
+        "Book"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {
+        "at_step": 3,
+        "failure_reason": "Bookshelf is full, cannot place book"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 8,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.25,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:07:52",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "L08",
+      "task_desc": "Set up for movie night: turn on TV, dim lamp, sit on sofa",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Television",
+          "target": "",
+          "reason": "Go to TV"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Television",
+          "target": "",
+          "reason": "Turn TV on"
+        },
+        {
+          "action": "Navigate",
+          "object": "DeskLamp",
+          "target": "",
+          "reason": "Go to lamp"
+        },
+        {
+          "action": "TurnOff",
+          "object": "DeskLamp",
+          "target": "",
+          "reason": "Dim the room"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Go to sofa"
+        },
+        {
+          "action": "Sit",
+          "object": "Sofa",
+          "target": "",
+          "reason": "Sit down to watch"
+        }
+      ],
+      "expected_objects": [
+        "Television",
+        "DeskLamp",
+        "Sofa"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 6,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 6.0,
+        "grounded_at": "2026-03-19T16:08:00",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B01",
+      "task_desc": "Turn off the bedroom light",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Go to light switch"
+        },
+        {
+          "action": "TurnOff",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Turn off the light"
+        }
+      ],
+      "expected_objects": [
+        "LightSwitch"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:08:21",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B02",
+      "task_desc": "Lie down on the bed",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Move to the bed"
+        },
+        {
+          "action": "LieOn",
+          "object": "Bed",
+          "target": "",
+          "reason": "Lie down on the bed"
+        }
+      ],
+      "expected_objects": [
+        "Bed"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:08:31",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B03",
+      "task_desc": "Pick up the alarm clock",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Move to alarm clock"
+        },
+        {
+          "action": "Grab",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Pick it up"
+        }
+      ],
+      "expected_objects": [
+        "AlarmClock"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:08:41",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B04",
+      "task_desc": "Go to sleep — turn off light and lie on the bed",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Go to light switch"
+        },
+        {
+          "action": "TurnOff",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Turn light off"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to the bed"
+        },
+        {
+          "action": "LieOn",
+          "object": "Bed",
+          "target": "",
+          "reason": "Lie down to sleep"
+        }
+      ],
+      "expected_objects": [
+        "LightSwitch",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:09:01",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B05",
+      "task_desc": "Set the alarm clock on the nightstand",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Go to alarm clock"
+        },
+        {
+          "action": "Grab",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Pick up alarm clock"
+        }
+      ],
+      "expected_objects": [
+        "AlarmClock",
+        "nightstand"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 2,
+        "failure_reason": "Nightstand surface is occupied"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 0.4,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:09:12",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B06",
+      "task_desc": "Get clothes from the dresser",
+      "room": "bedroom",
+      "scene": "FloorPlan302",
+      "obs": "Location: (0.00, 0.00), facing 180°\nHolding: nothing\nNearby objects:\n  - Floor [closed, off] (0.9m)\n  - CellPhone [closed, off] (1.3m)\n  - Drawer [closed, off] (1.3m)\n  - CD [closed, off] (1.3m)\n  - TennisRacket [closed, off] (1.4m)\n  - Drawer [closed, off] (1.4m)\n  - Pillow [closed, off] (1.4m)\n  - DeskLamp [closed, on] (1.4m)",
+      "visible_objects": [
+        "Bed",
+        "Chair",
+        "Desk",
+        "Drawer",
+        "Floor",
+        "Shelf"
+      ],
+      "reference_steps": [],
+      "expected_objects": [
+        "dresser",
+        "clothes"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 0,
+        "task_success": false,
+        "step_success_rate": 0.0,
+        "total_reward": 0.0,
+        "grounded_at": "2026-03-19T16:09:18",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B07",
+      "task_desc": "Prepare for bed: set alarm, turn off light, lie down",
+      "room": "bedroom",
+      "scene": "FloorPlan301",
+      "obs": "Location: (2.25, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - Box [open, off] (0.9m)\n  - Mirror [closed, off] (1.0m)\n  - LightSwitch [closed, on] (1.1m)\n  - BaseballBat [closed, off] (1.2m)\n  - GarbageCan [closed, off] (1.3m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Go to alarm clock"
+        },
+        {
+          "action": "Grab",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Pick up alarm clock"
+        },
+        {
+          "action": "Navigate",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Go to light switch"
+        },
+        {
+          "action": "TurnOff",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Turn off light"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to bed"
+        },
+        {
+          "action": "LieOn",
+          "object": "Bed",
+          "target": "",
+          "reason": "Lie down"
+        }
+      ],
+      "expected_objects": [
+        "AlarmClock",
+        "LightSwitch",
+        "Bed"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 8,
+        "executed_steps": 6,
+        "task_success": true,
+        "step_success_rate": 0.667,
+        "total_reward": 6.0,
+        "grounded_at": "2026-03-19T16:09:39",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "B08",
+      "task_desc": "Make the bed and place the pillow neatly",
+      "room": "bedroom",
+      "scene": "FloorPlan302",
+      "obs": "Location: (0.00, 0.00), facing 180°\nHolding: nothing\nNearby objects:\n  - Floor [closed, off] (0.9m)\n  - CellPhone [closed, off] (1.3m)\n  - Drawer [closed, off] (1.3m)\n  - CD [closed, off] (1.3m)\n  - TennisRacket [closed, off] (1.4m)\n  - Drawer [closed, off] (1.4m)\n  - Pillow [closed, off] (1.4m)\n  - DeskLamp [closed, on] (1.4m)",
+      "visible_objects": [
+        "Bed",
+        "Chair",
+        "Desk",
+        "Drawer",
+        "Floor",
+        "Shelf"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pillow",
+          "target": "",
+          "reason": "Go to pillow on floor"
+        },
+        {
+          "action": "Grab",
+          "object": "Pillow",
+          "target": "",
+          "reason": "Pick up pillow"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to the bed"
+        }
+      ],
+      "expected_objects": [
+        "Pillow",
+        "Bed"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {
+        "at_step": 0,
+        "failure_reason": "Pillow is under the bed, not reachable"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.429,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:09:46",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A01",
+      "task_desc": "Turn on the shower",
+      "room": "bathroom",
+      "scene": "FloorPlan402",
+      "obs": "Location: (-2.00, 2.50), facing 90°\nHolding: nothing\nNearby objects:\n  - TowelHolder [closed, off] (0.9m)\n  - Bathtub [closed, off] (1.0m)\n  - BathtubBasin [closed, off] (1.6m)\n  - Candle [closed, off] (1.8m)\n  - Toilet [closed, off] (1.9m)\n  - Towel [closed, off] (1.9m)\n  - ShowerDoor [closed, off] (1.9m)\n  - ToiletPaper [closed, off] (1.9m)",
+      "visible_objects": [
+        "Floor",
+        "ShowerDoor",
+        "ShowerGlass",
+        "Toilet",
+        "TowelHolder"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Go to shower"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn shower on"
+        }
+      ],
+      "expected_objects": [
+        "Faucet"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:09:51",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A02",
+      "task_desc": "Pick up the soap from the sink",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to the sink"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up soap"
+        }
+      ],
+      "expected_objects": [
+        "SoapBar",
+        "Sink"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 1.0,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:10:08",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A03",
+      "task_desc": "Turn on the bathroom light",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Go to switch"
+        }
+      ],
+      "expected_objects": [
+        "LightSwitch"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 2,
+        "executed_steps": 1,
+        "task_success": true,
+        "step_success_rate": 0.333,
+        "total_reward": 1.0,
+        "grounded_at": "2026-03-19T16:10:14",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A04",
+      "task_desc": "Wash hands with soap at the sink",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to sink"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn on water"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up soap"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn off water"
+        }
+      ],
+      "expected_objects": [
+        "Sink",
+        "Faucet",
+        "SoapBar"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 1,
+        "failure_reason": "Faucet handle is stuck"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 5,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.667,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:10:29",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A05",
+      "task_desc": "Brush teeth — toothbrush, use sink, brush",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to sink"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn on water"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn off water"
+        }
+      ],
+      "expected_objects": [
+        "toothbrush",
+        "Sink",
+        "Faucet"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.5,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:10:45",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A06",
+      "task_desc": "Take a towel and hang it on the rack",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Towel",
+          "target": "",
+          "reason": "Go to towel"
+        },
+        {
+          "action": "Grab",
+          "object": "Towel",
+          "target": "",
+          "reason": "Pick up towel"
+        }
+      ],
+      "expected_objects": [
+        "Towel",
+        "Towel"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 0.25,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:10:59",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A07",
+      "task_desc": "Full morning routine: light on, wash hands, brush teeth",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "LightSwitch",
+          "target": "",
+          "reason": "Go to switch"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to sink"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Start water for handwashing"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up soap"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Stop water"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Return to sink"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Start water for brushing"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Stop water"
+        }
+      ],
+      "expected_objects": [
+        "LightSwitch",
+        "SoapBar",
+        "toothbrush",
+        "Faucet"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {
+        "at_step": 3,
+        "failure_reason": "Soap dispenser is empty"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 13,
+        "executed_steps": 8,
+        "task_success": true,
+        "step_success_rate": 0.533,
+        "total_reward": 8.0,
+        "grounded_at": "2026-03-19T16:11:17",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "A08",
+      "task_desc": "Prepare the shower: turn on, adjust, place towel nearby",
+      "room": "bathroom",
+      "scene": "FloorPlan402",
+      "obs": "Location: (-2.00, 2.50), facing 90°\nHolding: nothing\nNearby objects:\n  - TowelHolder [closed, off] (0.9m)\n  - Bathtub [closed, off] (1.0m)\n  - BathtubBasin [closed, off] (1.6m)\n  - Candle [closed, off] (1.8m)\n  - Toilet [closed, off] (1.9m)\n  - Towel [closed, off] (1.9m)\n  - ShowerDoor [closed, off] (1.9m)\n  - ToiletPaper [closed, off] (1.9m)",
+      "visible_objects": [
+        "Floor",
+        "ShowerDoor",
+        "ShowerGlass",
+        "Toilet",
+        "TowelHolder"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Towel",
+          "target": "",
+          "reason": "Go to towel"
+        },
+        {
+          "action": "Navigate",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Go to shower"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn shower on"
+        }
+      ],
+      "expected_objects": [
+        "Faucet",
+        "Towel"
+      ],
+      "difficulty": "hard",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.375,
+        "total_reward": 3.0,
+        "grounded_at": "2026-03-19T16:11:23",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "X01",
+      "task_desc": "Put an apple in the microwave and heat it",
+      "room": "kitchen",
+      "scene": "FloorPlan1",
+      "obs": "Location: (-1.00, 1.00), facing 270°\nHolding: nothing\nNearby objects:\n  - CreditCard [closed, off] (0.6m)\n  - Apple [closed, off] (0.8m)\n  - Cabinet [closed, off] (0.9m)\n  - Drawer [closed, off] (1.0m)\n  - Egg [closed, off] (1.1m)\n  - Bread [closed, off] (1.2m)\n  - Toaster [closed, off] (1.2m)\n  - Book [closed, off] (1.2m)",
+      "visible_objects": [
+        "Cabinet",
+        "CoffeeMachine",
+        "Fridge",
+        "Toaster"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Apple",
+          "target": "",
+          "reason": "Go to apple"
+        },
+        {
+          "action": "Grab",
+          "object": "Apple",
+          "target": "",
+          "reason": "Pick up apple"
+        },
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to microwave"
+        },
+        {
+          "action": "Open",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Open microwave door"
+        },
+        {
+          "action": "Close",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Close the door"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Start heating"
+        }
+      ],
+      "expected_objects": [
+        "Apple",
+        "Microwave"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 7,
+        "executed_steps": 6,
+        "task_success": true,
+        "step_success_rate": 0.6,
+        "total_reward": 6.0,
+        "grounded_at": "2026-03-19T16:11:34",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "X02",
+      "task_desc": "Place a book on the coffee table and turn on the lamp",
+      "room": "living_room",
+      "scene": "FloorPlan201",
+      "obs": "Location: (-4.00, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - Pen [closed, off] (1.0m)\n  - Pencil [closed, off] (1.2m)\n  - Chair [closed, off] (1.2m)\n  - Newspaper [closed, off] (1.3m)\n  - Plate [closed, off] (1.6m)\n  - GarbageCan [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)\n  - Chair [closed, off] (1.8m)",
+      "visible_objects": [
+        "Floor",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Book",
+          "target": "",
+          "reason": "Go to book"
+        },
+        {
+          "action": "Grab",
+          "object": "Book",
+          "target": "",
+          "reason": "Pick up book"
+        },
+        {
+          "action": "Navigate",
+          "object": "CoffeeTable",
+          "target": "",
+          "reason": "Go to coffee table"
+        },
+        {
+          "action": "Navigate",
+          "object": "DeskLamp",
+          "target": "",
+          "reason": "Go to lamp"
+        }
+      ],
+      "expected_objects": [
+        "Book",
+        "CoffeeTable",
+        "DeskLamp"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 4,
+        "task_success": true,
+        "step_success_rate": 0.4,
+        "total_reward": 4.0,
+        "grounded_at": "2026-03-19T16:11:43",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "X03",
+      "task_desc": "Fill a cup with water from the sink",
+      "room": "kitchen",
+      "scene": "FloorPlan2",
+      "obs": "Location: (-1.00, 2.00), facing 180°\nHolding: nothing\nNearby objects:\n  - CellPhone [closed, off] (1.0m)\n  - GarbageCan [closed, off] (1.4m)\n  - Potato [closed, off] (1.5m)\n  - Chair [closed, off] (1.5m)\n  - Bowl [closed, off] (1.6m)\n  - CounterTop [closed, off] (1.8m)\n  - LightSwitch [closed, on] (1.9m)",
+      "visible_objects": [
+        "Bowl",
+        "CellPhone",
+        "CounterTop",
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn on water"
+        },
+        {
+          "action": "Wait",
+          "object": "",
+          "target": "",
+          "reason": "Fill the cup"
+        },
+        {
+          "action": "TurnOff",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Turn off water"
+        }
+      ],
+      "expected_objects": [
+        "Cup",
+        "Faucet"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 3,
+        "task_success": true,
+        "step_success_rate": 0.375,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:11:52",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "X04",
+      "task_desc": "Open the window and then close the curtains",
+      "room": "living_room",
+      "scene": "FloorPlan202",
+      "obs": "Location: (-0.50, 1.75), facing 270°\nHolding: nothing\nNearby objects:\n  - RemoteControl [closed, off] (1.0m)\n  - Pillow [closed, off] (1.3m)\n  - Box [open, off] (1.5m)\n  - CoffeeTable [closed, off] (1.6m)\n  - Sofa [closed, off] (1.7m)\n  - HousePlant [closed, off] (1.7m)\n  - KeyChain [closed, off] (1.9m)\n  - CreditCard [closed, off] (1.9m)",
+      "visible_objects": [
+        "CoffeeTable",
+        "Floor",
+        "HousePlant",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Curtains",
+          "target": "",
+          "reason": "Go to curtains"
+        }
+      ],
+      "expected_objects": [
+        "Window",
+        "Curtains"
+      ],
+      "difficulty": "easy",
+      "fail_injection": {},
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 4,
+        "executed_steps": 1,
+        "task_success": true,
+        "step_success_rate": 0.143,
+        "total_reward": 1.0,
+        "grounded_at": "2026-03-19T16:11:58",
+        "warnings": []
+      }
+    },
+    {
+      "task_id": "X05",
+      "task_desc": "Place soap in the cabinet under the sink",
+      "room": "bathroom",
+      "scene": "FloorPlan401",
+      "obs": "Location: (-2.25, 1.50), facing 0°\nHolding: nothing\nNearby objects:\n  - SinkBasin [closed, off] (0.8m)\n  - Faucet [closed, off] (1.2m)\n  - SoapBottle [closed, off] (1.2m)\n  - Sink [closed, off] (1.3m)\n  - Floor [closed, off] (1.3m)\n  - Mirror [closed, off] (1.4m)\n  - HandTowel [closed, off] (1.4m)\n  - HandTowelHolder [closed, off] (1.5m)",
+      "visible_objects": [
+        "Floor"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Go to soap"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up soap"
+        }
+      ],
+      "expected_objects": [
+        "SoapBar",
+        "cabinet"
+      ],
+      "difficulty": "medium",
+      "fail_injection": {
+        "at_step": 3,
+        "failure_reason": "Cabinet is already full"
+      },
+      "_meta": {
+        "gt_source": "simulator_execution",
+        "candidate_source": "manual",
+        "candidate_steps": 6,
+        "executed_steps": 2,
+        "task_success": true,
+        "step_success_rate": 0.286,
+        "total_reward": 2.0,
+        "grounded_at": "2026-03-19T16:12:06",
+        "warnings": []
+      }
+    }
+  ]
+}

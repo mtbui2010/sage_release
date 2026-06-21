@@ -1,0 +1,35 @@
+{
+  "per_method": {
+    "Direct": {
+      "n": 24,
+      "human": 0.3958333333333333,
+      "auto_partial": 0.40970833333333334,
+      "auto_binary": 0.2916666666666667
+    },
+    "SAGE": {
+      "n": 24,
+      "human": 0.53125,
+      "auto_partial": 0.5764166666666667,
+      "auto_binary": 0.4583333333333333
+    },
+    "Hierarchical": {
+      "n": 24,
+      "human": 0.28125,
+      "auto_partial": 0.3541666666666667,
+      "auto_binary": 0.20833333333333334
+    }
+  },
+  "n_common": 72,
+  "raters": [
+    "rater1:author",
+    "rater2:external"
+  ],
+  "auto_partial_vs_human": {
+    "pearson": 0.820032428435661,
+    "mae": 0.15740277777777778
+  },
+  "auto_binary_vs_human": {
+    "pearson": 0.7525593394040269,
+    "mae": 0.18055555555555555
+  }
+}

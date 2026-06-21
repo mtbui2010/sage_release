@@ -1,0 +1,73 @@
+id,method,task_id,auto_binary,auto_partial,n_met,n_total,mode,subgoals,goal_reason
+Direct__K01,Direct,K01,0.0,0.0,0,2,partial,mug on machine=N; machine on=N,Neither mug placed nor machine turned on
+Direct__K02,Direct,K02,0.0,0.0,0,2,partial,pot on stove=N; burner on=N,Stove not turned on
+Direct__K03,Direct,K03,1.0,1.0,2,2,partial,fridge accessed=Y; item grabbed=Y,Item retrieved from fridge
+Direct__K04,Direct,K04,0.0,0.0,0,2,partial,pot on stove=N; burner on=N,Stove not turned on
+Direct__K05,Direct,K05,0.0,0.0,0,2,partial,egg in pan=N; stove on=N,Egg not placed in pan
+Direct__K06,Direct,K06,0.0,0.0,0,1,binary,(single-condition: binary),Apple not washed
+Direct__K07,Direct,K07,0.0,0.0,0,2,partial,food in microwave=N; microwave on=N,Microwave not activated
+Direct__K08,Direct,K08,1.0,1.0,2,2,partial,plate on table=Y; cup on table=Y,Plate and cup placed on dining table
+Direct__K09,Direct,K09,0.0,0.0,0,2,partial,mug on machine=N; machine on=N,Neither mug placed nor machine turned on
+Direct__L01,Direct,L01,0.0,0.5,1,2,partial,tv on=Y; agent sitting=N,TV on but agent not sitting
+Direct__L02,Direct,L02,1.0,1.0,1,1,binary,(single-condition: binary),Agent sat on sofa
+Direct__L03,Direct,L03,0.0,0.5,1,2,partial,book grabbed=Y; agent sitting=N,Book grabbed but agent not sitting
+Direct__L04,Direct,L04,0.0,0.5,1,2,partial,tv on=N; agent sitting=Y,TV not turned on
+Direct__L05,Direct,L05,0.0,0.5,1,2,partial,book grabbed=N; agent sitting=Y,Book not picked up
+Direct__L06,Direct,L06,0.0,0.5,1,2,partial,lamp on=Y; agent sitting=N,Lamp on and sitting
+Direct__L07,Direct,L07,0.0,0.0,0,2,partial,first item placed=N; second item placed=N,Items placed
+Direct__L08,Direct,L08,0.0,0.333,1,3,partial,tv on=N; lamp off=N; agent sitting=Y,"TV on, lamp off, sitting"
+Direct__B01,Direct,B01,1.0,1.0,1,1,binary,(single-condition: binary),Light turned off
+Direct__B02,Direct,B02,1.0,1.0,1,1,partial,agent lying=Y,Agent lying on bed
+Direct__B03,Direct,B03,1.0,1.0,1,1,binary,(single-condition: binary),Alarm clock picked up
+Direct__B04,Direct,B04,1.0,1.0,2,2,partial,light off=Y; agent lying=Y,Agent lying on bed
+Direct__B05,Direct,B05,0.0,0.0,0,1,binary,(single-condition: binary),Alarm clock not interacted with
+Direct__B06,Direct,B06,0.0,0.0,0,2,partial,dresser opened=N; clothes grabbed=N,Dresser not opened
+Direct__B07,Direct,B07,0.0,0.0,0,3,partial,alarm grabbed=N; light off=N; agent lying=N,Alarm set and lying down
+SAGE__K01,SAGE,K01,0.0,0.5,1,2,partial,mug on machine=N; machine on=Y,Coffee machine on but mug not placed — coffee not brewed
+SAGE__K02,SAGE,K02,0.0,0.0,0,2,partial,pot on stove=N; burner on=N,Stove not turned on
+SAGE__K03,SAGE,K03,1.0,1.0,2,2,partial,fridge accessed=Y; item grabbed=Y,Item retrieved from fridge
+SAGE__K04,SAGE,K04,0.0,0.5,1,2,partial,pot on stove=Y; burner on=N,Stove not turned on
+SAGE__K05,SAGE,K05,0.0,0.0,0,2,partial,egg in pan=N; stove on=N,Egg not placed in pan
+SAGE__K06,SAGE,K06,1.0,1.0,1,1,binary,(single-condition: binary),Apple grabbed and faucet turned on (likely washed)
+SAGE__K07,SAGE,K07,0.0,0.5,1,2,partial,food in microwave=N; microwave on=Y,Microwave on but food not placed inside
+SAGE__K08,SAGE,K08,1.0,1.0,2,2,partial,plate on table=Y; cup on table=Y,Plate and cup placed on dining table
+SAGE__K09,SAGE,K09,0.0,0.5,1,2,partial,mug on machine=N; machine on=Y,Coffee machine on but mug not placed — coffee not brewed
+SAGE__L01,SAGE,L01,0.0,0.0,0,2,partial,tv on=N; agent sitting=N,TV not turned on
+SAGE__L02,SAGE,L02,1.0,1.0,1,1,binary,(single-condition: binary),Agent sat on sofa
+SAGE__L03,SAGE,L03,0.0,0.5,1,2,partial,book grabbed=Y; agent sitting=N,Book grabbed but agent not sitting
+SAGE__L04,SAGE,L04,1.0,1.0,2,2,partial,tv on=Y; agent sitting=Y,TV on and agent sitting
+SAGE__L05,SAGE,L05,1.0,1.0,2,2,partial,book grabbed=Y; agent sitting=Y,Book grabbed and agent sitting
+SAGE__L06,SAGE,L06,0.0,0.5,1,2,partial,lamp on=Y; agent sitting=N,Lamp on and sitting
+SAGE__L07,SAGE,L07,1.0,1.0,2,2,partial,first item placed=Y; second item placed=Y,Items placed
+SAGE__L08,SAGE,L08,0.0,0.667,2,3,partial,tv on=Y; lamp off=N; agent sitting=Y,"TV on, lamp off, sitting"
+SAGE__B01,SAGE,B01,0.0,0.0,0,1,binary,(single-condition: binary),Light turned off
+SAGE__B02,SAGE,B02,1.0,1.0,1,1,partial,agent lying=Y,Agent lying on bed
+SAGE__B03,SAGE,B03,1.0,1.0,1,1,binary,(single-condition: binary),Alarm clock picked up
+SAGE__B04,SAGE,B04,1.0,0.5,1,2,partial,light off=N; agent lying=Y,Agent lying on bed
+SAGE__B05,SAGE,B05,0.0,0.0,0,1,binary,(single-condition: binary),Alarm clock not interacted with
+SAGE__B06,SAGE,B06,0.0,0.0,0,2,partial,dresser opened=N; clothes grabbed=N,Dresser not opened
+SAGE__B07,SAGE,B07,1.0,0.667,2,3,partial,alarm grabbed=Y; light off=N; agent lying=Y,Alarm set and lying down
+Hierarchical__K01,Hierarchical,K01,0.0,0.0,0,2,partial,mug on machine=N; machine on=N,Neither mug placed nor machine turned on
+Hierarchical__K02,Hierarchical,K02,0.0,0.0,0,2,partial,pot on stove=N; burner on=N,Stove not turned on
+Hierarchical__K03,Hierarchical,K03,0.0,0.5,1,2,partial,fridge accessed=Y; item grabbed=N,No item grabbed from fridge
+Hierarchical__K04,Hierarchical,K04,1.0,1.0,2,2,partial,pot on stove=Y; burner on=Y,Pot on stove and burner on
+Hierarchical__K05,Hierarchical,K05,0.0,0.5,1,2,partial,egg in pan=Y; stove on=N,Egg in pan but stove not on
+Hierarchical__K06,Hierarchical,K06,0.0,0.0,0,1,binary,(single-condition: binary),Apple not washed
+Hierarchical__K07,Hierarchical,K07,0.0,0.0,0,2,partial,food in microwave=N; microwave on=N,Microwave not activated
+Hierarchical__K08,Hierarchical,K08,0.0,0.5,1,2,partial,plate on table=Y; cup on table=N,Plate placed but cup missing
+Hierarchical__K09,Hierarchical,K09,0.0,0.0,0,2,partial,mug on machine=N; machine on=N,Neither mug placed nor machine turned on
+Hierarchical__L01,Hierarchical,L01,0.0,0.5,1,2,partial,tv on=N; agent sitting=Y,TV not turned on
+Hierarchical__L03,Hierarchical,L03,0.0,0.5,1,2,partial,book grabbed=Y; agent sitting=N,Book grabbed but agent not sitting
+Hierarchical__L04,Hierarchical,L04,0.0,0.5,1,2,partial,tv on=N; agent sitting=Y,TV not turned on
+Hierarchical__L05,Hierarchical,L05,1.0,1.0,2,2,partial,book grabbed=Y; agent sitting=Y,Book grabbed and agent sitting
+Hierarchical__L06,Hierarchical,L06,0.0,0.5,1,2,partial,lamp on=Y; agent sitting=N,Lamp on and sitting
+Hierarchical__L07,Hierarchical,L07,1.0,1.0,2,2,partial,first item placed=Y; second item placed=Y,Items placed
+Hierarchical__L08,Hierarchical,L08,0.0,0.0,0,3,partial,tv on=N; lamp off=N; agent sitting=N,"TV on, lamp off, sitting"
+Hierarchical__B01,Hierarchical,B01,1.0,1.0,1,1,binary,(single-condition: binary),Light turned off
+Hierarchical__B02,Hierarchical,B02,0.0,0.0,0,1,partial,agent lying=N,Agent did not lie down
+Hierarchical__B03,Hierarchical,B03,0.0,0.0,0,1,binary,(single-condition: binary),Alarm clock not interacted with
+Hierarchical__B04,Hierarchical,B04,1.0,1.0,2,2,partial,light off=Y; agent lying=Y,Agent lying on bed
+Hierarchical__B05,Hierarchical,B05,0.0,0.0,0,1,binary,(single-condition: binary),Alarm clock not interacted with
+Hierarchical__B06,Hierarchical,B06,0.0,0.0,0,2,partial,dresser opened=N; clothes grabbed=N,Dresser not opened
+Hierarchical__B07,Hierarchical,B07,0.0,0.0,0,3,partial,alarm grabbed=N; light off=N; agent lying=N,Alarm set and lying down
+Hierarchical__L02,Hierarchical,L02,0.0,0.0,0,1,binary,(single-condition: binary),Agent sat on sofa
