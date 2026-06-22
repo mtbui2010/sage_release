@@ -11,7 +11,7 @@ Outputs (nothing in the paper is touched):
   images/fig1_storyboard.drawio
   images/fig2_overview.drawio
 
-Run:  /home/keti/miniconda3/bin/python scripts/gen_drawio.py
+Run:  python scripts/gen_drawio.py
 """
 import base64
 import os

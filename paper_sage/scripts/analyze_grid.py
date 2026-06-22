@@ -20,7 +20,7 @@ Statistics (no scipy dependency):
     Pairing is by task (seed-averaged) within each model.
 
 Usage:
-  /home/keti/miniconda3/bin/python scripts/analyze_grid.py
+  python scripts/analyze_grid.py
   ... --candidate SAGE-Fixed --metrics completeness precondition_strict executability
 """
 from __future__ import annotations

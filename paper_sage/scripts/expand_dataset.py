@@ -17,7 +17,7 @@ Quality discipline (so generated tasks can never pollute the benchmark):
      task_ids that continue the existing scheme.
 
 Run (thor_server must be up on :5555):
-  DISPLAY=:0 PYTHONPATH=... /home/keti/miniconda3/bin/python \
+  DISPLAY=:0 PYTHONPATH=... python \
       scripts/expand_dataset.py --target-new 40 --out <merged.json>
 
 Outputs:

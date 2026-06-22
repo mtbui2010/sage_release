@@ -13,7 +13,7 @@ MAXREPLAN="${MAXREPLAN:-2}"   # 0 = execute-as-planned (discriminative); 2 = wit
 SUFFIX="${SUFFIX:-}"          # output filename suffix, e.g. _r0
 mkdir -p "$ROOT/results/sim" "$ROOT/results/sim_logs"
 worker() { # $1=half-file $2=port $3=model $4=outcsv
-  /home/keti/miniconda3/bin/python -u "$PYP/apps/evaluate/evaluate_sim.py" \
+  python -u "$PYP/apps/evaluate/evaluate_sim.py" \
     --dataset "$1" --methods Direct Hierarchical SAGE \
     --host "$LLM" --model "$3" --sim-host localhost --sim-port "$2" \
     --max-replan "$MAXREPLAN" --out "$4"
@@ -29,7 +29,7 @@ for M in "${MODELS[@]}"; do
   P2=$!
   wait $P1 $P2
   # merge halves -> sim_<model><suffix>.csv
-  /home/keti/miniconda3/bin/python - "$ROOT/results/sim/sim_${SAFE}${SUFFIX}_h1.csv" \
+  python - "$ROOT/results/sim/sim_${SAFE}${SUFFIX}_h1.csv" \
         "$ROOT/results/sim/sim_${SAFE}${SUFFIX}_h2.csv" "$ROOT/results/sim/sim_${SAFE}${SUFFIX}.csv" <<'PY'
 import csv,sys,os
 h1,h2,out=sys.argv[1:4]

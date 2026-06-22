@@ -150,7 +150,7 @@ Two buckets: **on-device cost** (new, the point of the experiment) and
   model, so capture it separately).
 
 ### Quality parity (must hold vs server)
-Run the **same** subset on the server (`--host ollama.aistations.org`, the
+Run the **same** subset on the server (`--host localhost:11434`, the
 workspace default) and on the Jetson, **same `--seed`**, same models, same
 task-ids, and confirm parity on:
 - **step-success** (sim) / **precondition_strict** + **executability** (plan-mode),
@@ -256,7 +256,7 @@ Report this median/max (ms) as the **verifier_overhead** column. Expectation:
 ```bash
 python scripts/run_benchmark.py \
     --mode plan \
-    --host ollama.aistations.org \
+    --host localhost:11434 \
     --models qwen2.5:7b \
     --methods-csv "Direct,SAGE" \
     --task-ids $SUBSET \

@@ -19,8 +19,8 @@ from dataclasses import dataclass, field
 from typing import Any
 
 # ── Defaults ──────────────────────────────────────────────────────────
-# DEFAULT_HOST     = "http://localhost:11434"
-DEFAULT_HOST     = "http://ollama.aistations.org"
+# Point this at your own Ollama server, or override per call / via OLLAMA_HOST.
+DEFAULT_HOST     = "http://localhost:11434"
 DEFAULT_MODEL    = "llama3.3:70b"
 DEFAULT_BACKEND  = "ollama"
 
@@ -213,10 +213,10 @@ class LLMBackend:
         self.seed        = seed
 
         # Normalize host: ensure scheme is present
-        # "ollama.aistations.org"        → "https://ollama.aistations.org"
+        # "remote-host.example"          → "https://remote-host.example"
         # "localhost:11434"               → "http://localhost:11434"
         # "http://localhost:11434"        → "http://localhost:11434"  (unchanged)
-        # "https://ollama.aistations.org" → "https://ollama.aistations.org" (unchanged)
+        # "https://remote-host.example"   → "https://remote-host.example" (unchanged)
         h = host.strip().rstrip("/")
         if not h.startswith("http://") and not h.startswith("https://"):
             # localhost / 127.0.0.1 / 192.168.x.x → http, everything else → https

@@ -5,7 +5,7 @@
 # Run two instances (one per host) for reliable 2-way parallelism
 # without saturating a single host:
 #   run_grid.sh http://localhost:11434        llama3.2 mistral-nemo  &
-#   run_grid.sh http://ollama.aistations.org  qwen2.5:7b            &
+#   run_grid.sh http://localhost:11434  qwen2.5:7b            &
 # Each (model, seed) run:
 #   * is SERIAL (one method/task at a time) so the host is never
 #     saturated — concurrent heavy generation was found to starve and

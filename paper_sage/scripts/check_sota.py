@@ -21,7 +21,7 @@ It exercises everything that does NOT need an LLM:
       (we monkeypatch _score_candidates so NO LLM is called)
 
 Install prerequisite (pure-python, no native build):
-    /home/keti/miniconda3/bin/pip install pyperplan
+    pip install pyperplan
 
 Usage:
     python scripts/check_sota.py
@@ -120,7 +120,7 @@ def gate_llmp() -> None:
     except Exception as e:
         have_pyperplan = False
         print(f"  ---- pyperplan NOT installed ({e}); skipping solve gates.")
-        print("  ---- install with: /home/keti/miniconda3/bin/pip install pyperplan")
+        print("  ---- install with: pip install pyperplan")
 
     if have_pyperplan:
         for tname, (prob, must_have) in PROBLEMS.items():

@@ -18,7 +18,7 @@ ProcTHOR procedurally-generated houses. Only the reset/inspect helper differs.
 
 Run (iTHOR, the 9-scene anchor):
   DISPLAY=:0 PYTHONPATH=...:apps:apps/evaluate \
-      /home/keti/miniconda3/bin/python scripts/collect_transitions.py \
+      python scripts/collect_transitions.py \
       --sim-type thor --sim-port 5556 \
       --scenes FloorPlan1 FloorPlan2 FloorPlan3 FloorPlan201 FloorPlan203 \
                FloorPlan301 FloorPlan303 FloorPlan401 FloorPlan403 \
@@ -26,7 +26,7 @@ Run (iTHOR, the 9-scene anchor):
 
 Run (ProcTHOR transfer, unseen val houses, SAME probes):
   DISPLAY=:0 PYTHONPATH=...:apps:apps/evaluate \
-      /home/keti/miniconda3/bin/python scripts/collect_transitions.py \
+      python scripts/collect_transitions.py \
       --sim-type procthor --sim-port 5557 \
       --houses 0 1 2 3 4 5 6 7 8 9 --objs-per-aff 5 \
       --out results/autoverify/transitions_procthor.csv

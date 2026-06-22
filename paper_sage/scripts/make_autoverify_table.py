@@ -14,7 +14,7 @@ table: the constancy of the induced precondition column across domains is the
 whole transfer claim. Pure stdlib; no LLM.
 
 Run (after inducing both domains):
-  /home/keti/miniconda3/bin/python scripts/make_autoverify_table.py \
+  python scripts/make_autoverify_table.py \
       --ithor   results/autoverify/induced_rules.json \
       --procthor results/autoverify/induced_rules_procthor.json \
       --out ICRA/tables/table_autoverifier_transfer.tex

@@ -24,7 +24,7 @@ PYPLANNER  := $(REPO_ROOT)/pyplanner
 
 # Defaults — override on command line.
 PY        ?= python
-OLLAMA_HOST ?= http://ollama.aistations.org
+OLLAMA_HOST ?= http://localhost:11434
 GT_PATH   ?= $(PYPLANNER)/eval_dataset_gt.json
 MEMORY    ?= $(PAPER_DIR)/data/memory.jsonl
 
@@ -104,7 +104,7 @@ smoke:
 # ── published-style SOTA baselines (LLM+P, SayCan) ────────────────────
 # Offline acceptance gate for the SOTA baselines (no LLM). Requires the
 # pure-python classical planner pyperplan:
-#   /home/keti/miniconda3/bin/pip install pyperplan
+#   pip install pyperplan
 SOTA_METHODS ?= Direct,SAGE,LLM+P,SayCan
 
 check-sota:

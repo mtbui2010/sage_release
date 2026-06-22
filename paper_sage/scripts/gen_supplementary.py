@@ -10,7 +10,7 @@ floating environment.
 
 Run with the miniconda python (numpy available, scipy NOT required)::
 
-    /home/keti/miniconda3/bin/python scripts/gen_supplementary.py
+    python scripts/gen_supplementary.py
 
 Design / conventions (kept in sync with scripts/gen_tables.py and the deep
 analysis in results/analysis/deep_findings.md):

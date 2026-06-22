@@ -15,9 +15,9 @@ SAGE is a single-LLM embodied task planner built from two lightweight mechanisms
 supported by a **hybrid memory** (curated seed plans + successful runtime
 episodes). The verifier never calls an LLM.
 
-> **Naming note.** The method is **SAGE**. `SAGE` was its internal codename and
-> remains a working alias (`pyplanner.REGISTRY["SAGE"] == REGISTRY["SAGE"]`,
-> `SAGEPlanner is SAGEPlanner`) so older result files and scripts keep running.
+> **Naming note.** The method is **SAGE** (Symbolic Action-Gating and Editing).
+> It is registered as `pyplanner.REGISTRY["SAGE"]` and implemented by
+> `SAGEPlanner` in `pyplanner/sage.py`.
 
 ---
 
@@ -30,11 +30,13 @@ pyplanner/                 The pluggable LLM-planner library
     verifier.py            SymbolicState, verify_step, simulate (no LLM)
     memory_retriever.py    hybrid seed+live retrieval (Jaccard / optional Chroma)
     base.py                STEP_SCHEMA, ROBOT_ACTIONS, LLMBackend, baselines
-    sage.py               back-compat shim (SAGEPlanner = SAGEPlanner)
   eval_dataset_gt.json         38-task curated, simulator-verified benchmark
   eval_dataset_expanded.json   75-task expanded benchmark (used in the paper)
+  eval_dataset_procthor.json   70-task ProcTHOR out-of-distribution set
   apps/evaluate/           simulator execution + goal_checker + human-eval capture
+  apps/make_dataset.py     SAMPLES_RAW → the 38 curated tasks (provenance)
   apps/thor_server.py      AI2-THOR ZMQ server (run on a host with a display)
+  apps/procthor_server.py  ProcTHOR scene server (for the OOD set)
   thor_app/sim_client.py   ZMQ client used by the evaluator
 paper_sage/
   scripts/                 benchmark driver, analysis, table/figure generators
@@ -63,8 +65,9 @@ a GPU + display:
 pip install ai2thor==5.0.0 pyzmq
 ```
 
-An LLM endpoint is served via **Ollama** (`https://ollama.com`). Point the
-benchmark at it with `--host`. Default models in the paper are open-weight
+Models are served via **Ollama** (install from `https://ollama.com`). The
+benchmark talks to it over `--host` (default `http://localhost:11434`; point
+this at a remote server if Ollama runs elsewhere). Default models in the paper are open-weight
 (`llama3.2`, `qwen2.5:7b`, `mistral-nemo`, `qwen2.5:14b`, `qwen2.5:32b-instruct`).
 
 ---

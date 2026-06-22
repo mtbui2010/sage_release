@@ -14,7 +14,7 @@ Method (conjunctive precondition mining, no sklearn):
   against the observed labels and compare to the hand-written verifier.
 
 Run (after collect_transitions.py):
-  /home/keti/miniconda3/bin/python scripts/induce_verifier.py \
+  python scripts/induce_verifier.py \
       --in results/autoverify/transitions.csv
 Outputs: results/autoverify/induced_rules.json + ICRA/tables/table_autoverifier.tex
 """

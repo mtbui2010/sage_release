@@ -49,7 +49,7 @@ The companion **thor_app** connects PyPlanner to [AI2-THOR](https://ai2thor.alle
 
 > **Try it in your browser — no local setup required**
 >
-> [Task Planning Demo](http://demo-planner.aistations.org)
+> [Task Planning Demo](http://localhost:11434)
 >
 > Select a room task, choose a planning method and LLM provider, and watch the robot
 > navigate and interact with objects in a photorealistic kitchen/living room/bedroom/bathroom.

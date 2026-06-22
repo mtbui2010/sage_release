@@ -13,7 +13,7 @@ scenario in FloorPlan1 (kitchen), saving RGB frames to images/frames/*.png:
 Best-effort: if any single action fails we still save the current frame and move
 on, so the script always produces something usable. Run with:
 
-  DISPLAY=:0 /home/keti/miniconda3/bin/python scripts/capture_thor_frames.py
+  DISPLAY=:0 python scripts/capture_thor_frames.py
 """
 import math
 import os

@@ -9,7 +9,7 @@ and (b) re-run the planning benchmark. All paths are relative to the
 
 ## 0. Environment (pin these)
 
-- **Python**: 3.10+ (the authors use a CPython at `/home/keti/miniconda3/bin/python`).
+- **Python**: 3.10+ (any CPython works; use a virtualenv).
 - **Simulator**: `ai2thor==5.0.0` (iTHOR). The dataset's `_meta.verifier` is
   `"ai2thor-5.0.0"`; results are only comparable on this version.
 - **Display**: AI2-THOR needs an X display. Use `DISPLAY=:0` (or an Xvfb
@@ -27,8 +27,8 @@ and (b) re-run the planning benchmark. All paths are relative to the
   > Everything in this artifact runs against `pyplanner` alone.
 
 - **LLM backend**: Ollama, non-streaming `/api/chat`. Default host
-  `http://ollama.aistations.org` (or `http://localhost:11434`). Set
-  `OLLAMA_TIMEOUT=300` for slow serial generation.
+  `http://localhost:11434` (point `OLLAMA_HOST` at your own server to override).
+  Set `OLLAMA_TIMEOUT=300` for slow serial generation.
 
 ---
 
@@ -127,8 +127,8 @@ generated tasks are held out (no leakage) when running on the 75-task file.
 
 ## 6. Re-run the planning benchmark
 
-**Plan-quality grid** (9 methods baseline set is `Direct, CoT, Few-Shot CoT,
-Self-Refine, ReAct, Hierarchical, Hierarchical Few-Shot, SAGE`; SAGE = SAGE),
+**Plan-quality grid** (baseline set is `Direct, CoT, Few-Shot CoT,
+Self-Refine, ReAct, Hierarchical, Hierarchical Few-Shot, SAGE`),
 over seeds 0/1/2, on the 75-task expanded set:
 
 ```bash

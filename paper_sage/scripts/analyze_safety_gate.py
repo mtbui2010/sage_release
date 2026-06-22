@@ -24,7 +24,7 @@ so the headline number is the drop in that count.
 
 Usage (no scipy / no GPU / no LLM):
 
-  /home/keti/miniconda3/bin/python scripts/analyze_safety_gate.py \\
+  python scripts/analyze_safety_gate.py \\
       --off results/sim_safety/sim_qwen2.5_7b_off_r2.csv \\
       --on  results/sim_safety/sim_qwen2.5_7b_gate_r2.csv
 

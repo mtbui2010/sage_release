@@ -1,6 +1,6 @@
 # pyplanner/sage.py
 # ─────────────────────────────────────────────────────────────────────
-# SAGE — Grounded Repair-and-Critique Embodied planner.
+# SAGE — Symbolic Action-Gating and Editing for LLM task planners.
 #
 # Three integrated components:
 #
@@ -187,7 +187,7 @@ def _flatten(blocks: list[_SubgoalBlock]) -> list[dict]:
 class SAGEPlanner(BasePlanner):
     name        = "SAGE"
     description = (
-        "Grounded Repair-and-Critique Embodied planner: hierarchical "
+        "Symbolic Action-Gating and Editing planner: hierarchical "
         "decomposition + symbolic precondition verifier + hybrid memory "
         "retrieval (seed GT + live episodes) + suffix-only sub-goal repair."
     )

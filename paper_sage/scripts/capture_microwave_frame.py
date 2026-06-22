@@ -5,7 +5,7 @@ garbage-can frame in the SAGE figures (task changed: recycle bin -> microwave).
 Same scene/camera settings as capture_thor_frames.py for visual consistency.
 Saves images/frames/microwave.png (microwave open, potato inside).
 
-Run:  DISPLAY=:0 /home/keti/miniconda3/bin/python scripts/capture_microwave_frame.py
+Run:  DISPLAY=:0 python scripts/capture_microwave_frame.py
 """
 import math, os
 from PIL import Image

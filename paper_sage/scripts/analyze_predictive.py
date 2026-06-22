@@ -5,7 +5,7 @@ Headline ICRA empirical finding: the zero-token, offline
 \texttt{precondition_strict} score PREDICTS whether a plan will succeed when
 executed in AI2-THOR. Run AFTER the sim run, with miniconda python:
 
-  DISPLAY= /home/keti/miniconda3/bin/python scripts/analyze_predictive.py
+  DISPLAY= python scripts/analyze_predictive.py
 
 Reads the sim result CSVs (results/sim_*/*.csv or results/*/sim_*.csv), pairs
 each executed plan's offline grounding score with its binary task-success, and

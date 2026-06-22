@@ -27,7 +27,7 @@ and the reset entry point differ (ProcTHOR uses split+house_index instead of a
 FloorPlan scene string).
 
 Run (a ProcTHOR-capable thor_server must be listening; here :5558):
-    OLLAMA_TIMEOUT=300 /home/keti/miniconda3/bin/python \
+    OLLAMA_TIMEOUT=300 python \
         scripts/build_procthor_dataset.py \
           --sim-host localhost --sim-port 5558 \
           --split val --num-houses 40 --target-new 70 \

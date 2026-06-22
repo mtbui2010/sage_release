@@ -15,7 +15,7 @@ export PYTHONPATH="$PYP:$PYP/apps" OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-300}"
 for M in "${MODELS[@]}"; do
   SAFE=$(echo "$M" | tr ':' '_')
   echo "=== $(date '+%F %T') SIM start model=$M host=$LLM port=$PORT ==="
-  /home/keti/miniconda3/bin/python -u "$PYP/apps/evaluate/evaluate_sim.py" \
+  python -u "$PYP/apps/evaluate/evaluate_sim.py" \
     --dataset "$DS" --methods Direct Hierarchical SAGE \
     --host "$LLM" --model "$M" \
     --sim-host localhost --sim-port "$PORT" --max-replan 2 \

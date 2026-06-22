@@ -15,7 +15,7 @@ export PYTHONPATH="$PYP:$PYP/apps" OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-400}"
 METHODS=(SAGE SAGE-NoVerifier SAGE-NoRepair SAGE-NoMemory)
 mkdir -p "$ROOT/results/sim" "$ROOT/results/sim_logs"
 worker() { # $1=half $2=port $3=model $4=out
-  /home/keti/miniconda3/bin/python -u "$PYP/apps/evaluate/evaluate_sim.py" \
+  python -u "$PYP/apps/evaluate/evaluate_sim.py" \
     --dataset "$1" --methods "${METHODS[@]}" \
     --host "$LLM" --model "$3" --sim-host localhost --sim-port "$2" \
     --max-replan 0 --out "$4"
@@ -30,7 +30,7 @@ for M in "${MODELS[@]}"; do
       >> "$ROOT/results/sim_logs/sim_${SAFE}_abl_h2.log" 2>&1 &
   B=$!
   wait $A $B
-  /home/keti/miniconda3/bin/python - "$ROOT/results/sim/sim_${SAFE}_abl_h1.csv" \
+  python - "$ROOT/results/sim/sim_${SAFE}_abl_h1.csv" \
         "$ROOT/results/sim/sim_${SAFE}_abl_h2.csv" "$ROOT/results/sim/sim_${SAFE}_abl.csv" <<'PY'
 import csv,sys,os
 h1,h2,out=sys.argv[1:4]; rows=[]

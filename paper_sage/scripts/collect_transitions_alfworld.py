@@ -41,7 +41,7 @@ from knowing the answer):
 
 Run (single process):
   ALFWORLD_DATA=~/.cache/alfworld \
-  /home/keti/miniconda3/bin/python scripts/collect_transitions_alfworld.py \
+  python scripts/collect_transitions_alfworld.py \
       --config ~/.cache/alfworld/configs/base_config.yaml \
       --num-games 20 --game-start 0 \
       --out results/autoverify/transitions_alfworld_0.csv

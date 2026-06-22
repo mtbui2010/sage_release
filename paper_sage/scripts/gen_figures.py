@@ -3,7 +3,7 @@
 =================
 Generate the ICRA figures from the grid CSVs. Run with miniconda python:
 
-  DISPLAY= /home/keti/miniconda3/bin/python scripts/gen_figures.py
+  DISPLAY= python scripts/gen_figures.py
 
 Outputs (PDF, vector) into paper/generated/figures/ :
   cost_quality_pareto.pdf   tokens/plan (log x) vs completeness, SAGE highlighted

@@ -4,7 +4,7 @@
 Generate the LaTeX result tables for the ICRA paper from the grid CSVs
 (and, when present, the sim CSVs). Run with the miniconda python (numpy).
 
-  /home/keti/miniconda3/bin/python scripts/gen_tables.py
+  python scripts/gen_tables.py
 
 Outputs into paper/generated/ (also copied to ICRA/tables/ by the Makefile/
 assembly step):

@@ -60,7 +60,7 @@ material:
   absolute home paths (e.g. `/home/<user>/...`, `/media/<user>/...`) from
   scripts, configs, logs, and docs.
 - Strip identifying hostnames from defaults (e.g. the Ollama host
-  `ollama.aistations.org`) or replace with a neutral placeholder.
+  `localhost:11434`) or replace with a neutral placeholder.
 - Scrub `grounded_at` timestamps only if they could de-anonymize; otherwise they
   are harmless provenance.
 - Host the anonymized artifact on an anonymous repository (e.g. an

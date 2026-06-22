@@ -1,0 +1,3559 @@
+{
+  "version": "procthor-1.0",
+  "samples": [
+    {
+      "task_id": "P00_01",
+      "task_desc": "Open the doorway",
+      "room": "house",
+      "scene": "procthor_val_0",
+      "obs": "Current room: Bedroom\nLocation: (11.50, 6.50), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, GarbageCan, Microwave, Safe, Shelf, ShelvingUnit, Television, Toaster\n  LivingRoom: Chair, DiningTable, DogBed, FloorLamp, GarbageCan, HousePlant, Painting, Sofa, TVStand, Television\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Shelf, TVStand, Television\n  Bathroom: Faucet, GarbageCan, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CellPhone, CreditCard, Cup\n  - Egg, Kettle, Knife, Ladle, Lettuce, Pencil\n  - PepperShaker, Plate, Potato, SaltShaker, SoapBottle, SprayBottle\n  - Vase, WineBottle\nLivingRoom:\n  - Bowl, Candle, CellPhone, CreditCard, GarbageCan, KeyChain\n  - Laptop, Newspaper, Pen, Pencil, Pillow, Plate\n  - RemoteControl, Watch\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CellPhone, CreditCard, KeyChain, Mug, Pen, Pencil\n  - Pillow, RemoteControl, Statue, TeddyBear, TissueBox, Vase\n  - Watch\nBathroom:\n  - DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "Doorway"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Doorway",
+          "target": "",
+          "reason": "Go to Doorway"
+        },
+        {
+          "action": "Open",
+          "object": "Doorway",
+          "target": "",
+          "reason": "Open Doorway"
+        }
+      ],
+      "expected_objects": [
+        "Doorway"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 0,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 0
+      }
+    },
+    {
+      "task_id": "P01_01",
+      "task_desc": "Turn on the faucet",
+      "room": "house",
+      "scene": "procthor_val_1",
+      "obs": "Current room: Bathroom\nLocation: (7.25, 2.25), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Chair, DiningTable, Drawer, Dresser, Painting\n  Bathroom: Drawer, Dresser, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CD, CellPhone, Pen, Pillow, RemoteControl, Statue\nBathroom:\n  - Cloth, DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "Faucet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Faucet",
+          "target": "",
+          "reason": "Go to Faucet"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Faucet",
+          "target": "",
+          "reason": "TurnOn Faucet"
+        }
+      ],
+      "expected_objects": [
+        "Faucet"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 1,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 1
+      }
+    },
+    {
+      "task_id": "P04_01",
+      "task_desc": "Turn on the television",
+      "room": "house",
+      "scene": "procthor_val_4",
+      "obs": "Current room: Kitchen\nLocation: (2.75, 11.25), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CounterTop, DiningTable, Fridge, HousePlant, Painting, Stool, Television\n  LivingRoom: DiningTable, GarbageCan, Sofa, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CreditCard, DishSponge, Egg\n  - Knife, Lettuce, Pen, Plate, Pot, Potato\n  - Vase\nLivingRoom:\n  - Bowl, Box, Laptop, Newspaper, Pen, Pillow\n  - Plate, RemoteControl, Statue\nBedroom:\n  - BasketBall, Box, Laptop, Pencil, Pillow, RemoteControl\nBathroom:\n  - Plunger, SprayBottle",
+      "visible_objects": [
+        "Chair",
+        "DiningTable",
+        "Television"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Television",
+          "target": "",
+          "reason": "Go to Television"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Television",
+          "target": "",
+          "reason": "TurnOn Television"
+        }
+      ],
+      "expected_objects": [
+        "Television"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 4,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 4
+      }
+    },
+    {
+      "task_id": "P06_01",
+      "task_desc": "Open the laundry hamper",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "LaundryHamper"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "LaundryHamper",
+          "target": "",
+          "reason": "Go to LaundryHamper"
+        },
+        {
+          "action": "Open",
+          "object": "LaundryHamper",
+          "target": "",
+          "reason": "Open LaundryHamper"
+        }
+      ],
+      "expected_objects": [
+        "LaundryHamper"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P08_01",
+      "task_desc": "Open the toilet",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Toilet",
+          "target": "",
+          "reason": "Go to Toilet"
+        },
+        {
+          "action": "Open",
+          "object": "Toilet",
+          "target": "",
+          "reason": "Open Toilet"
+        }
+      ],
+      "expected_objects": [
+        "Toilet"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_01",
+      "task_desc": "Turn on the floor lamp",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "FloorLamp"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "FloorLamp",
+          "target": "",
+          "reason": "Go to FloorLamp"
+        },
+        {
+          "action": "TurnOn",
+          "object": "FloorLamp",
+          "target": "",
+          "reason": "TurnOn FloorLamp"
+        }
+      ],
+      "expected_objects": [
+        "FloorLamp"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P24_01",
+      "task_desc": "Pick up the dish sponge",
+      "room": "house",
+      "scene": "procthor_val_24",
+      "obs": "Current room: Bathroom\nLocation: (0.75, 2.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, DishSponge, Plunger, SoapBar, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "DishSponge",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Go to DishSponge"
+        },
+        {
+          "action": "Grab",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Pick up DishSponge"
+        }
+      ],
+      "expected_objects": [
+        "DishSponge"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 24,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 24
+      }
+    },
+    {
+      "task_id": "P28_01",
+      "task_desc": "Pick up the paper towel roll",
+      "room": "house",
+      "scene": "procthor_val_28",
+      "obs": "Current room: Bathroom\nLocation: (2.00, 1.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, PaperTowelRoll, Plunger, ToiletPaper",
+      "visible_objects": [
+        "PaperTowelRoll"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "PaperTowelRoll",
+          "target": "",
+          "reason": "Go to PaperTowelRoll"
+        },
+        {
+          "action": "Grab",
+          "object": "PaperTowelRoll",
+          "target": "",
+          "reason": "Pick up PaperTowelRoll"
+        }
+      ],
+      "expected_objects": [
+        "PaperTowelRoll"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 28,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 28
+      }
+    },
+    {
+      "task_id": "P31_01",
+      "task_desc": "Open the drawer",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "Drawer"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Drawer",
+          "target": "",
+          "reason": "Go to Drawer"
+        },
+        {
+          "action": "Open",
+          "object": "Drawer",
+          "target": "",
+          "reason": "Open Drawer"
+        }
+      ],
+      "expected_objects": [
+        "Drawer"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P35_01",
+      "task_desc": "Pick up the tissue box",
+      "room": "house",
+      "scene": "procthor_val_35",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, Painting, Shelf, SideTable, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, TissueBox",
+      "visible_objects": [
+        "TissueBox"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Go to TissueBox"
+        },
+        {
+          "action": "Grab",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Pick up TissueBox"
+        }
+      ],
+      "expected_objects": [
+        "TissueBox"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 35,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 35
+      }
+    },
+    {
+      "task_id": "P38_01",
+      "task_desc": "Turn on the microwave",
+      "room": "house",
+      "scene": "procthor_val_38",
+      "obs": "Current room: Kitchen\nLocation: (1.00, 6.50), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, HousePlant, Microwave, Painting, Toaster\n  LivingRoom: Cart, DiningTable, GarbageCan, HousePlant, Painting, Sofa, Stool, TVStand, Television\n\nEnvironment:\nKitchen:\n  - Apple, Bowl, ButterKnife, CellPhone, CreditCard, Egg\n  - Fork, Knife, Lettuce, Pan, Pen, PepperShaker\n  - Plate, Potato, SaltShaker, SoapBottle, Spatula, SprayBottle\n  - Tomato, WineBottle\nLivingRoom:\n  - Bowl, CreditCard, KeyChain, RemoteControl, TissueBox, Vase",
+      "visible_objects": [
+        "Chair",
+        "DiningTable",
+        "Microwave"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "TurnOn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "TurnOn Microwave"
+        }
+      ],
+      "expected_objects": [
+        "Microwave"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 38,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 38
+      }
+    },
+    {
+      "task_id": "P00_02",
+      "task_desc": "Pick up the alarm clock",
+      "room": "house",
+      "scene": "procthor_val_0",
+      "obs": "Current room: Bedroom\nLocation: (11.50, 6.50), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, GarbageCan, Microwave, Safe, Shelf, ShelvingUnit, Television, Toaster\n  LivingRoom: Chair, DiningTable, DogBed, FloorLamp, GarbageCan, HousePlant, Painting, Sofa, TVStand, Television\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Shelf, TVStand, Television\n  Bathroom: Faucet, GarbageCan, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CellPhone, CreditCard, Cup\n  - Egg, Kettle, Knife, Ladle, Lettuce, Pencil\n  - PepperShaker, Plate, Potato, SaltShaker, SoapBottle, SprayBottle\n  - Vase, WineBottle\nLivingRoom:\n  - Bowl, Candle, CellPhone, CreditCard, GarbageCan, KeyChain\n  - Laptop, Newspaper, Pen, Pencil, Pillow, Plate\n  - RemoteControl, Watch\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CellPhone, CreditCard, KeyChain, Mug, Pen, Pencil\n  - Pillow, RemoteControl, Statue, TeddyBear, TissueBox, Vase\n  - Watch\nBathroom:\n  - DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "AlarmClock"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Go to AlarmClock"
+        },
+        {
+          "action": "Grab",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Pick up AlarmClock"
+        }
+      ],
+      "expected_objects": [
+        "AlarmClock"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 0,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 0
+      }
+    },
+    {
+      "task_id": "P06_02",
+      "task_desc": "Pick up the candle",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Candle"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Candle",
+          "target": "",
+          "reason": "Go to Candle"
+        },
+        {
+          "action": "Grab",
+          "object": "Candle",
+          "target": "",
+          "reason": "Pick up Candle"
+        }
+      ],
+      "expected_objects": [
+        "Candle"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P08_02",
+      "task_desc": "Pick up the plunger",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Plunger",
+        "Sink",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Plunger",
+          "target": "",
+          "reason": "Go to Plunger"
+        },
+        {
+          "action": "Grab",
+          "object": "Plunger",
+          "target": "",
+          "reason": "Pick up Plunger"
+        }
+      ],
+      "expected_objects": [
+        "Plunger"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_02",
+      "task_desc": "Pick up the bowl",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Bowl"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Go to Bowl"
+        },
+        {
+          "action": "Grab",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Pick up Bowl"
+        }
+      ],
+      "expected_objects": [
+        "Bowl"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P31_02",
+      "task_desc": "Pick up the cd",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "CD"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CD",
+          "target": "",
+          "reason": "Go to CD"
+        },
+        {
+          "action": "Grab",
+          "object": "CD",
+          "target": "",
+          "reason": "Pick up CD"
+        }
+      ],
+      "expected_objects": [
+        "CD"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P06_03",
+      "task_desc": "Pick up the cloth",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Cloth"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Go to Cloth"
+        },
+        {
+          "action": "Grab",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Pick up Cloth"
+        }
+      ],
+      "expected_objects": [
+        "Cloth"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P08_03",
+      "task_desc": "Pick up the spray bottle",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "SprayBottle",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Go to SprayBottle"
+        },
+        {
+          "action": "Grab",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Pick up SprayBottle"
+        }
+      ],
+      "expected_objects": [
+        "SprayBottle"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P31_03",
+      "task_desc": "Pick up the pencil",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "Pencil"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Go to Pencil"
+        },
+        {
+          "action": "Grab",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Pick up Pencil"
+        }
+      ],
+      "expected_objects": [
+        "Pencil"
+      ],
+      "difficulty": "easy",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P00_03",
+      "task_desc": "Place the alarm clock on the bed",
+      "room": "house",
+      "scene": "procthor_val_0",
+      "obs": "Current room: Bedroom\nLocation: (11.50, 6.50), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, GarbageCan, Microwave, Safe, Shelf, ShelvingUnit, Television, Toaster\n  LivingRoom: Chair, DiningTable, DogBed, FloorLamp, GarbageCan, HousePlant, Painting, Sofa, TVStand, Television\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Shelf, TVStand, Television\n  Bathroom: Faucet, GarbageCan, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CellPhone, CreditCard, Cup\n  - Egg, Kettle, Knife, Ladle, Lettuce, Pencil\n  - PepperShaker, Plate, Potato, SaltShaker, SoapBottle, SprayBottle\n  - Vase, WineBottle\nLivingRoom:\n  - Bowl, Candle, CellPhone, CreditCard, GarbageCan, KeyChain\n  - Laptop, Newspaper, Pen, Pencil, Pillow, Plate\n  - RemoteControl, Watch\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CellPhone, CreditCard, KeyChain, Mug, Pen, Pencil\n  - Pillow, RemoteControl, Statue, TeddyBear, TissueBox, Vase\n  - Watch\nBathroom:\n  - DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "AlarmClock",
+        "Bed"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Go to AlarmClock"
+        },
+        {
+          "action": "Grab",
+          "object": "AlarmClock",
+          "target": "",
+          "reason": "Pick up AlarmClock"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "AlarmClock",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 0,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 0
+      }
+    },
+    {
+      "task_id": "P04_02",
+      "task_desc": "Place the bread on the chair",
+      "room": "house",
+      "scene": "procthor_val_4",
+      "obs": "Current room: Kitchen\nLocation: (2.75, 11.25), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CounterTop, DiningTable, Fridge, HousePlant, Painting, Stool, Television\n  LivingRoom: DiningTable, GarbageCan, Sofa, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CreditCard, DishSponge, Egg\n  - Knife, Lettuce, Pen, Plate, Pot, Potato\n  - Vase\nLivingRoom:\n  - Bowl, Box, Laptop, Newspaper, Pen, Pillow\n  - Plate, RemoteControl, Statue\nBedroom:\n  - BasketBall, Box, Laptop, Pencil, Pillow, RemoteControl\nBathroom:\n  - Plunger, SprayBottle",
+      "visible_objects": [
+        "Bread",
+        "Chair",
+        "DiningTable"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Bread",
+          "target": "",
+          "reason": "Go to Bread"
+        },
+        {
+          "action": "Grab",
+          "object": "Bread",
+          "target": "",
+          "reason": "Pick up Bread"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "Bread",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 4,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 4
+      }
+    },
+    {
+      "task_id": "P05_01",
+      "task_desc": "Place the bowl on the counter top",
+      "room": "house",
+      "scene": "procthor_val_5",
+      "obs": "Current room: Kitchen\nLocation: (7.25, 3.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, GarbageBag, HousePlant\n  LivingRoom: DiningTable, Drawer, Dresser, HousePlant, Painting, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Bowl, ButterKnife, Cup, DishSponge, Egg, Knife\n  - Lettuce, PepperShaker, Potato, SoapBottle, Spatula, Spoon\n  - Statue, Vase, WineBottle\nLivingRoom:\n  - Book, Bowl, KeyChain, Pen, Pencil, RemoteControl\n  - Vase, Watch\nBedroom:\n  - AlarmClock, Book, Pillow, RemoteControl, TennisRacket, Watch\nBathroom:\n  - PaperTowelRoll, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "Bowl",
+        "CounterTop",
+        "GarbageBag"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Go to Bowl"
+        },
+        {
+          "action": "Grab",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Pick up Bowl"
+        },
+        {
+          "action": "Navigate",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Go to CounterTop"
+        },
+        {
+          "action": "Place",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Place CounterTop"
+        }
+      ],
+      "expected_objects": [
+        "Bowl",
+        "CounterTop"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 5,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 5
+      }
+    },
+    {
+      "task_id": "P06_04",
+      "task_desc": "Place the candle on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Candle",
+        "GarbageCan"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Candle",
+          "target": "",
+          "reason": "Go to Candle"
+        },
+        {
+          "action": "Grab",
+          "object": "Candle",
+          "target": "",
+          "reason": "Pick up Candle"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "Candle",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P07_01",
+      "task_desc": "Place the cell phone on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_7",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 1.75), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Desk, Drawer, Dresser, FloorLamp, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - BaseballBat, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Mug, Pen, Pencil, Pillow, Statue\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "CellPhone"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Go to CellPhone"
+        },
+        {
+          "action": "Grab",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Pick up CellPhone"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "CellPhone",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 7,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 7
+      }
+    },
+    {
+      "task_id": "P08_04",
+      "task_desc": "Place the spray bottle on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "SprayBottle",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Go to SprayBottle"
+        },
+        {
+          "action": "Grab",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Pick up SprayBottle"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "SprayBottle",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_03",
+      "task_desc": "Place the book on the dining table",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Book",
+        "DiningTable"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Book",
+          "target": "",
+          "reason": "Go to Book"
+        },
+        {
+          "action": "Grab",
+          "object": "Book",
+          "target": "",
+          "reason": "Pick up Book"
+        },
+        {
+          "action": "Navigate",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Go to DiningTable"
+        },
+        {
+          "action": "Place",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Place DiningTable"
+        }
+      ],
+      "expected_objects": [
+        "Book",
+        "DiningTable"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P19_01",
+      "task_desc": "Place the cell phone on the chair",
+      "room": "house",
+      "scene": "procthor_val_19",
+      "obs": "Current room: Bedroom\nLocation: (3.50, 5.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Chair, DeskLamp, DiningTable, DogBed, Drawer, Dresser, GarbageCan\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - AlarmClock, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Pillow, TissueBox, Vase, Watch\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "CellPhone",
+        "Chair"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Go to CellPhone"
+        },
+        {
+          "action": "Grab",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Pick up CellPhone"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "CellPhone",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 19,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 19
+      }
+    },
+    {
+      "task_id": "P22_01",
+      "task_desc": "Place the pencil on the bed",
+      "room": "house",
+      "scene": "procthor_val_22",
+      "obs": "Current room: Bedroom\nLocation: (3.50, 1.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, DeskLamp, Drawer, Dresser, GarbageCan, Painting, Television\n\nEnvironment:\nBedroom:\n  - AlarmClock, BaseballBat, Bowl, Box, Pencil, Pillow\n  - Vase, Watch",
+      "visible_objects": [
+        "Bed",
+        "Pencil"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Go to Pencil"
+        },
+        {
+          "action": "Grab",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Pick up Pencil"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "Pencil",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 22,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 22
+      }
+    },
+    {
+      "task_id": "P23_01",
+      "task_desc": "Place the cell phone on the desk",
+      "room": "house",
+      "scene": "procthor_val_23",
+      "obs": "Current room: Bedroom\nLocation: (5.00, 5.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Desk, Drawer, Dresser, HousePlant, Painting, Shelf\n\nEnvironment:\nBedroom:\n  - AlarmClock, BaseballBat, Book, Bowl, Box, CellPhone\n  - CreditCard, KeyChain, Mug, Pencil, Pillow, Statue\n  - TissueBox, Watch",
+      "visible_objects": [
+        "Bed",
+        "CellPhone",
+        "Desk"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Go to CellPhone"
+        },
+        {
+          "action": "Grab",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Pick up CellPhone"
+        },
+        {
+          "action": "Navigate",
+          "object": "Desk",
+          "target": "",
+          "reason": "Go to Desk"
+        },
+        {
+          "action": "Place",
+          "object": "Desk",
+          "target": "",
+          "reason": "Place Desk"
+        }
+      ],
+      "expected_objects": [
+        "CellPhone",
+        "Desk"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 23,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 23
+      }
+    },
+    {
+      "task_id": "P24_02",
+      "task_desc": "Place the soap bar on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_24",
+      "obs": "Current room: Bathroom\nLocation: (0.75, 2.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, DishSponge, Plunger, SoapBar, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "GarbageCan",
+        "SoapBar",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Go to SoapBar"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up SoapBar"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "SoapBar",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 24,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 24
+      }
+    },
+    {
+      "task_id": "P25_01",
+      "task_desc": "Place the kettle on the counter top",
+      "room": "house",
+      "scene": "procthor_val_25",
+      "obs": "Current room: Kitchen\nLocation: (5.50, 3.00), facing 270\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, Fridge, GarbageCan, HousePlant, Painting, Television\n  LivingRoom: Chair, Desk, DeskLamp, DiningTable, Painting, Shelf, ShelvingUnit, Sofa, TVStand\n\nEnvironment:\nKitchen:\n  - ButterKnife, DishSponge, Kettle, Ladle, Lettuce, PaperTowelRoll\n  - Pot, Potato, SaltShaker, SoapBottle, Spatula, Spoon\n  - Tomato\nLivingRoom:\n  - Bowl, Box, CreditCard, KeyChain, Laptop, Newspaper\n  - Pen, Pencil, Pillow, Plate, RemoteControl, Statue\n  - Television, Watch",
+      "visible_objects": [
+        "CounterTop",
+        "Kettle"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Kettle",
+          "target": "",
+          "reason": "Go to Kettle"
+        },
+        {
+          "action": "Grab",
+          "object": "Kettle",
+          "target": "",
+          "reason": "Pick up Kettle"
+        },
+        {
+          "action": "Navigate",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Go to CounterTop"
+        },
+        {
+          "action": "Place",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Place CounterTop"
+        }
+      ],
+      "expected_objects": [
+        "Kettle",
+        "CounterTop"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 25,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 25
+      }
+    },
+    {
+      "task_id": "P31_04",
+      "task_desc": "Place the pencil on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "Pencil"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Go to Pencil"
+        },
+        {
+          "action": "Grab",
+          "object": "Pencil",
+          "target": "",
+          "reason": "Pick up Pencil"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "Pencil",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P33_01",
+      "task_desc": "Place the dumbbell on the bed",
+      "room": "house",
+      "scene": "procthor_val_33",
+      "obs": "Current room: Bedroom\nLocation: (5.00, 4.25), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Painting, Shelf, ShelvingUnit, Sofa, TVStand, Television\n\nEnvironment:\nBedroom:\n  - AlarmClock, BasketBall, Book, CellPhone, CreditCard, Dumbbell\n  - Laptop, Mug, Pencil, Pillow, RemoteControl, Vase",
+      "visible_objects": [
+        "Bed",
+        "Dumbbell",
+        "Sofa"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Dumbbell",
+          "target": "",
+          "reason": "Go to Dumbbell"
+        },
+        {
+          "action": "Grab",
+          "object": "Dumbbell",
+          "target": "",
+          "reason": "Pick up Dumbbell"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "Dumbbell",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 33,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 33
+      }
+    },
+    {
+      "task_id": "P35_02",
+      "task_desc": "Place the tissue box on the shelf",
+      "room": "house",
+      "scene": "procthor_val_35",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, Painting, Shelf, SideTable, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, TissueBox",
+      "visible_objects": [
+        "Shelf",
+        "TissueBox"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Go to TissueBox"
+        },
+        {
+          "action": "Grab",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Pick up TissueBox"
+        },
+        {
+          "action": "Navigate",
+          "object": "Shelf",
+          "target": "",
+          "reason": "Go to Shelf"
+        },
+        {
+          "action": "Place",
+          "object": "Shelf",
+          "target": "",
+          "reason": "Place Shelf"
+        }
+      ],
+      "expected_objects": [
+        "TissueBox",
+        "Shelf"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 35,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 35
+      }
+    },
+    {
+      "task_id": "P38_02",
+      "task_desc": "Place the egg on the chair",
+      "room": "house",
+      "scene": "procthor_val_38",
+      "obs": "Current room: Kitchen\nLocation: (1.00, 6.50), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, HousePlant, Microwave, Painting, Toaster\n  LivingRoom: Cart, DiningTable, GarbageCan, HousePlant, Painting, Sofa, Stool, TVStand, Television\n\nEnvironment:\nKitchen:\n  - Apple, Bowl, ButterKnife, CellPhone, CreditCard, Egg\n  - Fork, Knife, Lettuce, Pan, Pen, PepperShaker\n  - Plate, Potato, SaltShaker, SoapBottle, Spatula, SprayBottle\n  - Tomato, WineBottle\nLivingRoom:\n  - Bowl, CreditCard, KeyChain, RemoteControl, TissueBox, Vase",
+      "visible_objects": [
+        "Chair",
+        "DiningTable",
+        "Egg"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Egg",
+          "target": "",
+          "reason": "Go to Egg"
+        },
+        {
+          "action": "Grab",
+          "object": "Egg",
+          "target": "",
+          "reason": "Pick up Egg"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "Egg",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 38,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 38
+      }
+    },
+    {
+      "task_id": "P00_04",
+      "task_desc": "Place the baseball bat on the bed",
+      "room": "house",
+      "scene": "procthor_val_0",
+      "obs": "Current room: Bedroom\nLocation: (11.50, 6.50), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, GarbageCan, Microwave, Safe, Shelf, ShelvingUnit, Television, Toaster\n  LivingRoom: Chair, DiningTable, DogBed, FloorLamp, GarbageCan, HousePlant, Painting, Sofa, TVStand, Television\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Shelf, TVStand, Television\n  Bathroom: Faucet, GarbageCan, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CellPhone, CreditCard, Cup\n  - Egg, Kettle, Knife, Ladle, Lettuce, Pencil\n  - PepperShaker, Plate, Potato, SaltShaker, SoapBottle, SprayBottle\n  - Vase, WineBottle\nLivingRoom:\n  - Bowl, Candle, CellPhone, CreditCard, GarbageCan, KeyChain\n  - Laptop, Newspaper, Pen, Pencil, Pillow, Plate\n  - RemoteControl, Watch\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CellPhone, CreditCard, KeyChain, Mug, Pen, Pencil\n  - Pillow, RemoteControl, Statue, TeddyBear, TissueBox, Vase\n  - Watch\nBathroom:\n  - DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "BaseballBat",
+        "Bed"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "BaseballBat",
+          "target": "",
+          "reason": "Go to BaseballBat"
+        },
+        {
+          "action": "Grab",
+          "object": "BaseballBat",
+          "target": "",
+          "reason": "Pick up BaseballBat"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "BaseballBat",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 0,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 0
+      }
+    },
+    {
+      "task_id": "P04_03",
+      "task_desc": "Place the butter knife on the chair",
+      "room": "house",
+      "scene": "procthor_val_4",
+      "obs": "Current room: Kitchen\nLocation: (2.75, 11.25), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CounterTop, DiningTable, Fridge, HousePlant, Painting, Stool, Television\n  LivingRoom: DiningTable, GarbageCan, Sofa, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CreditCard, DishSponge, Egg\n  - Knife, Lettuce, Pen, Plate, Pot, Potato\n  - Vase\nLivingRoom:\n  - Bowl, Box, Laptop, Newspaper, Pen, Pillow\n  - Plate, RemoteControl, Statue\nBedroom:\n  - BasketBall, Box, Laptop, Pencil, Pillow, RemoteControl\nBathroom:\n  - Plunger, SprayBottle",
+      "visible_objects": [
+        "ButterKnife",
+        "Chair",
+        "DiningTable"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Go to ButterKnife"
+        },
+        {
+          "action": "Grab",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Pick up ButterKnife"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "ButterKnife",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 4,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 4
+      }
+    },
+    {
+      "task_id": "P05_02",
+      "task_desc": "Place the butter knife on the counter top",
+      "room": "house",
+      "scene": "procthor_val_5",
+      "obs": "Current room: Kitchen\nLocation: (7.25, 3.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, GarbageBag, HousePlant\n  LivingRoom: DiningTable, Drawer, Dresser, HousePlant, Painting, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Bowl, ButterKnife, Cup, DishSponge, Egg, Knife\n  - Lettuce, PepperShaker, Potato, SoapBottle, Spatula, Spoon\n  - Statue, Vase, WineBottle\nLivingRoom:\n  - Book, Bowl, KeyChain, Pen, Pencil, RemoteControl\n  - Vase, Watch\nBedroom:\n  - AlarmClock, Book, Pillow, RemoteControl, TennisRacket, Watch\nBathroom:\n  - PaperTowelRoll, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "ButterKnife",
+        "CounterTop",
+        "GarbageBag"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Go to ButterKnife"
+        },
+        {
+          "action": "Grab",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Pick up ButterKnife"
+        },
+        {
+          "action": "Navigate",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Go to CounterTop"
+        },
+        {
+          "action": "Place",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Place CounterTop"
+        }
+      ],
+      "expected_objects": [
+        "ButterKnife",
+        "CounterTop"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 5,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 5
+      }
+    },
+    {
+      "task_id": "P06_05",
+      "task_desc": "Place the candle on the sink",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Candle",
+        "Sink"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Candle",
+          "target": "",
+          "reason": "Go to Candle"
+        },
+        {
+          "action": "Grab",
+          "object": "Candle",
+          "target": "",
+          "reason": "Pick up Candle"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to Sink"
+        },
+        {
+          "action": "Place",
+          "object": "Sink",
+          "target": "",
+          "reason": "Place Sink"
+        }
+      ],
+      "expected_objects": [
+        "Candle",
+        "Sink"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P07_02",
+      "task_desc": "Place the cell phone on the bed",
+      "room": "house",
+      "scene": "procthor_val_7",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 1.75), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Desk, Drawer, Dresser, FloorLamp, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - BaseballBat, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Mug, Pen, Pencil, Pillow, Statue\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "CellPhone"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Go to CellPhone"
+        },
+        {
+          "action": "Grab",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Pick up CellPhone"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "CellPhone",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 7,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 7
+      }
+    },
+    {
+      "task_id": "P08_05",
+      "task_desc": "Place the spray bottle on the sink",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "SprayBottle",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Go to SprayBottle"
+        },
+        {
+          "action": "Grab",
+          "object": "SprayBottle",
+          "target": "",
+          "reason": "Pick up SprayBottle"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to Sink"
+        },
+        {
+          "action": "Place",
+          "object": "Sink",
+          "target": "",
+          "reason": "Place Sink"
+        }
+      ],
+      "expected_objects": [
+        "SprayBottle",
+        "Sink"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_04",
+      "task_desc": "Place the bowl on the dining table",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Bowl",
+        "DiningTable"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Go to Bowl"
+        },
+        {
+          "action": "Grab",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Pick up Bowl"
+        },
+        {
+          "action": "Navigate",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Go to DiningTable"
+        },
+        {
+          "action": "Place",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Place DiningTable"
+        }
+      ],
+      "expected_objects": [
+        "Bowl",
+        "DiningTable"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P19_02",
+      "task_desc": "Place the credit card on the chair",
+      "room": "house",
+      "scene": "procthor_val_19",
+      "obs": "Current room: Bedroom\nLocation: (3.50, 5.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Chair, DeskLamp, DiningTable, DogBed, Drawer, Dresser, GarbageCan\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - AlarmClock, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Pillow, TissueBox, Vase, Watch\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "Chair",
+        "CreditCard"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Go to CreditCard"
+        },
+        {
+          "action": "Grab",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Pick up CreditCard"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "CreditCard",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 19,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 19
+      }
+    },
+    {
+      "task_id": "P22_02",
+      "task_desc": "Place the pillow on the bed",
+      "room": "house",
+      "scene": "procthor_val_22",
+      "obs": "Current room: Bedroom\nLocation: (3.50, 1.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, DeskLamp, Drawer, Dresser, GarbageCan, Painting, Television\n\nEnvironment:\nBedroom:\n  - AlarmClock, BaseballBat, Bowl, Box, Pencil, Pillow\n  - Vase, Watch",
+      "visible_objects": [
+        "Bed",
+        "Pillow"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Pillow",
+          "target": "",
+          "reason": "Go to Pillow"
+        },
+        {
+          "action": "Grab",
+          "object": "Pillow",
+          "target": "",
+          "reason": "Pick up Pillow"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "Pillow",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 22,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 22
+      }
+    },
+    {
+      "task_id": "P24_03",
+      "task_desc": "Place the soap bar on the sink",
+      "room": "house",
+      "scene": "procthor_val_24",
+      "obs": "Current room: Bathroom\nLocation: (0.75, 2.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, DishSponge, Plunger, SoapBar, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "Sink",
+        "SoapBar",
+        "Toilet"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Go to SoapBar"
+        },
+        {
+          "action": "Grab",
+          "object": "SoapBar",
+          "target": "",
+          "reason": "Pick up SoapBar"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to Sink"
+        },
+        {
+          "action": "Place",
+          "object": "Sink",
+          "target": "",
+          "reason": "Place Sink"
+        }
+      ],
+      "expected_objects": [
+        "SoapBar",
+        "Sink"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 24,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 24
+      }
+    },
+    {
+      "task_id": "P31_05",
+      "task_desc": "Place the remote control on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "RemoteControl"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "RemoteControl",
+          "target": "",
+          "reason": "Go to RemoteControl"
+        },
+        {
+          "action": "Grab",
+          "object": "RemoteControl",
+          "target": "",
+          "reason": "Pick up RemoteControl"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "RemoteControl",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P35_03",
+      "task_desc": "Place the tissue box on the side table",
+      "room": "house",
+      "scene": "procthor_val_35",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, Painting, Shelf, SideTable, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, TissueBox",
+      "visible_objects": [
+        "SideTable",
+        "TissueBox"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Go to TissueBox"
+        },
+        {
+          "action": "Grab",
+          "object": "TissueBox",
+          "target": "",
+          "reason": "Pick up TissueBox"
+        },
+        {
+          "action": "Navigate",
+          "object": "SideTable",
+          "target": "",
+          "reason": "Go to SideTable"
+        },
+        {
+          "action": "Place",
+          "object": "SideTable",
+          "target": "",
+          "reason": "Place SideTable"
+        }
+      ],
+      "expected_objects": [
+        "TissueBox",
+        "SideTable"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 35,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 35
+      }
+    },
+    {
+      "task_id": "P00_05",
+      "task_desc": "Place the basket ball on the bed",
+      "room": "house",
+      "scene": "procthor_val_0",
+      "obs": "Current room: Bedroom\nLocation: (11.50, 6.50), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, GarbageCan, Microwave, Safe, Shelf, ShelvingUnit, Television, Toaster\n  LivingRoom: Chair, DiningTable, DogBed, FloorLamp, GarbageCan, HousePlant, Painting, Sofa, TVStand, Television\n  Bedroom: Bed, Chair, Desk, DeskLamp, DiningTable, Drawer, Dresser, HousePlant, Shelf, TVStand, Television\n  Bathroom: Faucet, GarbageCan, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Apple, Bread, ButterKnife, CellPhone, CreditCard, Cup\n  - Egg, Kettle, Knife, Ladle, Lettuce, Pencil\n  - PepperShaker, Plate, Potato, SaltShaker, SoapBottle, SprayBottle\n  - Vase, WineBottle\nLivingRoom:\n  - Bowl, Candle, CellPhone, CreditCard, GarbageCan, KeyChain\n  - Laptop, Newspaper, Pen, Pencil, Pillow, Plate\n  - RemoteControl, Watch\nBedroom:\n  - AlarmClock, BaseballBat, BasketBall, Book, Bowl, Box\n  - CellPhone, CreditCard, KeyChain, Mug, Pen, Pencil\n  - Pillow, RemoteControl, Statue, TeddyBear, TissueBox, Vase\n  - Watch\nBathroom:\n  - DishSponge, Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "BasketBall",
+        "Bed"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "BasketBall",
+          "target": "",
+          "reason": "Go to BasketBall"
+        },
+        {
+          "action": "Grab",
+          "object": "BasketBall",
+          "target": "",
+          "reason": "Pick up BasketBall"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "BasketBall",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 0,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 0
+      }
+    },
+    {
+      "task_id": "P14_05",
+      "task_desc": "Put the bowl in the safe and close it",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Bowl",
+        "Safe"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "Open",
+          "object": "Safe",
+          "target": "",
+          "reason": "Open Safe"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Go to Bowl"
+        },
+        {
+          "action": "Grab",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Pick up Bowl"
+        },
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "PutIn",
+          "object": "Safe",
+          "target": "",
+          "reason": "PutIn Safe"
+        },
+        {
+          "action": "Close",
+          "object": "Safe",
+          "target": "",
+          "reason": "Close Safe"
+        }
+      ],
+      "expected_objects": [
+        "Bowl",
+        "Safe"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P25_02",
+      "task_desc": "Put the butter knife in the fridge and close it",
+      "room": "house",
+      "scene": "procthor_val_25",
+      "obs": "Current room: Kitchen\nLocation: (5.50, 3.00), facing 270\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, Fridge, GarbageCan, HousePlant, Painting, Television\n  LivingRoom: Chair, Desk, DeskLamp, DiningTable, Painting, Shelf, ShelvingUnit, Sofa, TVStand\n\nEnvironment:\nKitchen:\n  - ButterKnife, DishSponge, Kettle, Ladle, Lettuce, PaperTowelRoll\n  - Pot, Potato, SaltShaker, SoapBottle, Spatula, Spoon\n  - Tomato\nLivingRoom:\n  - Bowl, Box, CreditCard, KeyChain, Laptop, Newspaper\n  - Pen, Pencil, Pillow, Plate, RemoteControl, Statue\n  - Television, Watch",
+      "visible_objects": [
+        "ButterKnife",
+        "Fridge"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Go to Fridge"
+        },
+        {
+          "action": "Open",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Open Fridge"
+        },
+        {
+          "action": "Navigate",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Go to ButterKnife"
+        },
+        {
+          "action": "Grab",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Pick up ButterKnife"
+        },
+        {
+          "action": "Navigate",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Go to Fridge"
+        },
+        {
+          "action": "PutIn",
+          "object": "Fridge",
+          "target": "",
+          "reason": "PutIn Fridge"
+        },
+        {
+          "action": "Close",
+          "object": "Fridge",
+          "target": "",
+          "reason": "Close Fridge"
+        }
+      ],
+      "expected_objects": [
+        "ButterKnife",
+        "Fridge"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 25,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 25
+      }
+    },
+    {
+      "task_id": "P38_03",
+      "task_desc": "Put the bowl in the microwave and close it",
+      "room": "house",
+      "scene": "procthor_val_38",
+      "obs": "Current room: Kitchen\nLocation: (1.00, 6.50), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, HousePlant, Microwave, Painting, Toaster\n  LivingRoom: Cart, DiningTable, GarbageCan, HousePlant, Painting, Sofa, Stool, TVStand, Television\n\nEnvironment:\nKitchen:\n  - Apple, Bowl, ButterKnife, CellPhone, CreditCard, Egg\n  - Fork, Knife, Lettuce, Pan, Pen, PepperShaker\n  - Plate, Potato, SaltShaker, SoapBottle, Spatula, SprayBottle\n  - Tomato, WineBottle\nLivingRoom:\n  - Bowl, CreditCard, KeyChain, RemoteControl, TissueBox, Vase",
+      "visible_objects": [
+        "Bowl",
+        "Chair",
+        "DiningTable",
+        "Microwave"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "Open",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Open Microwave"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Go to Bowl"
+        },
+        {
+          "action": "Grab",
+          "object": "Bowl",
+          "target": "",
+          "reason": "Pick up Bowl"
+        },
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "PutIn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "PutIn Microwave"
+        },
+        {
+          "action": "Close",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Close Microwave"
+        }
+      ],
+      "expected_objects": [
+        "Bowl",
+        "Microwave"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 38,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 38
+      }
+    },
+    {
+      "task_id": "P14_06",
+      "task_desc": "Put the box in the safe and close it",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Box",
+        "Safe"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "Open",
+          "object": "Safe",
+          "target": "",
+          "reason": "Open Safe"
+        },
+        {
+          "action": "Navigate",
+          "object": "Box",
+          "target": "",
+          "reason": "Go to Box"
+        },
+        {
+          "action": "Grab",
+          "object": "Box",
+          "target": "",
+          "reason": "Pick up Box"
+        },
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "PutIn",
+          "object": "Safe",
+          "target": "",
+          "reason": "PutIn Safe"
+        },
+        {
+          "action": "Close",
+          "object": "Safe",
+          "target": "",
+          "reason": "Close Safe"
+        }
+      ],
+      "expected_objects": [
+        "Box",
+        "Safe"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P38_04",
+      "task_desc": "Put the butter knife in the microwave and close it",
+      "room": "house",
+      "scene": "procthor_val_38",
+      "obs": "Current room: Kitchen\nLocation: (1.00, 6.50), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, HousePlant, Microwave, Painting, Toaster\n  LivingRoom: Cart, DiningTable, GarbageCan, HousePlant, Painting, Sofa, Stool, TVStand, Television\n\nEnvironment:\nKitchen:\n  - Apple, Bowl, ButterKnife, CellPhone, CreditCard, Egg\n  - Fork, Knife, Lettuce, Pan, Pen, PepperShaker\n  - Plate, Potato, SaltShaker, SoapBottle, Spatula, SprayBottle\n  - Tomato, WineBottle\nLivingRoom:\n  - Bowl, CreditCard, KeyChain, RemoteControl, TissueBox, Vase",
+      "visible_objects": [
+        "ButterKnife",
+        "Chair",
+        "DiningTable",
+        "Microwave"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "Open",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Open Microwave"
+        },
+        {
+          "action": "Navigate",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Go to ButterKnife"
+        },
+        {
+          "action": "Grab",
+          "object": "ButterKnife",
+          "target": "",
+          "reason": "Pick up ButterKnife"
+        },
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "PutIn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "PutIn Microwave"
+        },
+        {
+          "action": "Close",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Close Microwave"
+        }
+      ],
+      "expected_objects": [
+        "ButterKnife",
+        "Microwave"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 38,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 38
+      }
+    },
+    {
+      "task_id": "P14_07",
+      "task_desc": "Put the candle in the safe and close it",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Candle",
+        "Safe"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "Open",
+          "object": "Safe",
+          "target": "",
+          "reason": "Open Safe"
+        },
+        {
+          "action": "Navigate",
+          "object": "Candle",
+          "target": "",
+          "reason": "Go to Candle"
+        },
+        {
+          "action": "Grab",
+          "object": "Candle",
+          "target": "",
+          "reason": "Pick up Candle"
+        },
+        {
+          "action": "Navigate",
+          "object": "Safe",
+          "target": "",
+          "reason": "Go to Safe"
+        },
+        {
+          "action": "PutIn",
+          "object": "Safe",
+          "target": "",
+          "reason": "PutIn Safe"
+        },
+        {
+          "action": "Close",
+          "object": "Safe",
+          "target": "",
+          "reason": "Close Safe"
+        }
+      ],
+      "expected_objects": [
+        "Candle",
+        "Safe"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P38_05",
+      "task_desc": "Put the cell phone in the microwave and close it",
+      "room": "house",
+      "scene": "procthor_val_38",
+      "obs": "Current room: Kitchen\nLocation: (1.00, 6.50), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: Chair, CoffeeMachine, CounterTop, DiningTable, Fridge, HousePlant, Microwave, Painting, Toaster\n  LivingRoom: Cart, DiningTable, GarbageCan, HousePlant, Painting, Sofa, Stool, TVStand, Television\n\nEnvironment:\nKitchen:\n  - Apple, Bowl, ButterKnife, CellPhone, CreditCard, Egg\n  - Fork, Knife, Lettuce, Pan, Pen, PepperShaker\n  - Plate, Potato, SaltShaker, SoapBottle, Spatula, SprayBottle\n  - Tomato, WineBottle\nLivingRoom:\n  - Bowl, CreditCard, KeyChain, RemoteControl, TissueBox, Vase",
+      "visible_objects": [
+        "CellPhone",
+        "Chair",
+        "DiningTable",
+        "Microwave"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "Open",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Open Microwave"
+        },
+        {
+          "action": "Navigate",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Go to CellPhone"
+        },
+        {
+          "action": "Grab",
+          "object": "CellPhone",
+          "target": "",
+          "reason": "Pick up CellPhone"
+        },
+        {
+          "action": "Navigate",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Go to Microwave"
+        },
+        {
+          "action": "PutIn",
+          "object": "Microwave",
+          "target": "",
+          "reason": "PutIn Microwave"
+        },
+        {
+          "action": "Close",
+          "object": "Microwave",
+          "target": "",
+          "reason": "Close Microwave"
+        }
+      ],
+      "expected_objects": [
+        "CellPhone",
+        "Microwave"
+      ],
+      "difficulty": "hard",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 38,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 38
+      }
+    },
+    {
+      "task_id": "P05_03",
+      "task_desc": "Place the cup on the counter top",
+      "room": "house",
+      "scene": "procthor_val_5",
+      "obs": "Current room: Kitchen\nLocation: (7.25, 3.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, GarbageBag, HousePlant\n  LivingRoom: DiningTable, Drawer, Dresser, HousePlant, Painting, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Bowl, ButterKnife, Cup, DishSponge, Egg, Knife\n  - Lettuce, PepperShaker, Potato, SoapBottle, Spatula, Spoon\n  - Statue, Vase, WineBottle\nLivingRoom:\n  - Book, Bowl, KeyChain, Pen, Pencil, RemoteControl\n  - Vase, Watch\nBedroom:\n  - AlarmClock, Book, Pillow, RemoteControl, TennisRacket, Watch\nBathroom:\n  - PaperTowelRoll, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "CounterTop",
+        "Cup",
+        "GarbageBag"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Cup",
+          "target": "",
+          "reason": "Go to Cup"
+        },
+        {
+          "action": "Grab",
+          "object": "Cup",
+          "target": "",
+          "reason": "Pick up Cup"
+        },
+        {
+          "action": "Navigate",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Go to CounterTop"
+        },
+        {
+          "action": "Place",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Place CounterTop"
+        }
+      ],
+      "expected_objects": [
+        "Cup",
+        "CounterTop"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 5,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 5
+      }
+    },
+    {
+      "task_id": "P06_06",
+      "task_desc": "Place the cloth on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Cloth",
+        "GarbageCan"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Go to Cloth"
+        },
+        {
+          "action": "Grab",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Pick up Cloth"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "Cloth",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P07_03",
+      "task_desc": "Place the credit card on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_7",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 1.75), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Desk, Drawer, Dresser, FloorLamp, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - BaseballBat, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Mug, Pen, Pencil, Pillow, Statue\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "CreditCard"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Go to CreditCard"
+        },
+        {
+          "action": "Grab",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Pick up CreditCard"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "CreditCard",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 7,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 7
+      }
+    },
+    {
+      "task_id": "P08_06",
+      "task_desc": "Place the toilet paper on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "Toilet",
+        "ToiletPaper"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "ToiletPaper",
+          "target": "",
+          "reason": "Go to ToiletPaper"
+        },
+        {
+          "action": "Grab",
+          "object": "ToiletPaper",
+          "target": "",
+          "reason": "Pick up ToiletPaper"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "ToiletPaper",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_08",
+      "task_desc": "Place the box on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "ArmChair",
+        "Box"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Box",
+          "target": "",
+          "reason": "Go to Box"
+        },
+        {
+          "action": "Grab",
+          "object": "Box",
+          "target": "",
+          "reason": "Pick up Box"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "Box",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P19_03",
+      "task_desc": "Place the key chain on the chair",
+      "room": "house",
+      "scene": "procthor_val_19",
+      "obs": "Current room: Bedroom\nLocation: (3.50, 5.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: Bed, Chair, DeskLamp, DiningTable, DogBed, Drawer, Dresser, GarbageCan\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - AlarmClock, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Pillow, TissueBox, Vase, Watch\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "Chair",
+        "KeyChain"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "KeyChain",
+          "target": "",
+          "reason": "Go to KeyChain"
+        },
+        {
+          "action": "Grab",
+          "object": "KeyChain",
+          "target": "",
+          "reason": "Pick up KeyChain"
+        },
+        {
+          "action": "Navigate",
+          "object": "Chair",
+          "target": "",
+          "reason": "Go to Chair"
+        },
+        {
+          "action": "Place",
+          "object": "Chair",
+          "target": "",
+          "reason": "Place Chair"
+        }
+      ],
+      "expected_objects": [
+        "KeyChain",
+        "Chair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 19,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 19
+      }
+    },
+    {
+      "task_id": "P31_06",
+      "task_desc": "Place the remote control on the bed",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "RemoteControl"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "RemoteControl",
+          "target": "",
+          "reason": "Go to RemoteControl"
+        },
+        {
+          "action": "Grab",
+          "object": "RemoteControl",
+          "target": "",
+          "reason": "Pick up RemoteControl"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "RemoteControl",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P05_04",
+      "task_desc": "Place the dish sponge on the counter top",
+      "room": "house",
+      "scene": "procthor_val_5",
+      "obs": "Current room: Kitchen\nLocation: (7.25, 3.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Kitchen: CounterTop, GarbageBag, HousePlant\n  LivingRoom: DiningTable, Drawer, Dresser, HousePlant, Painting, Television\n  Bedroom: Bed, Drawer, Dresser, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nKitchen:\n  - Bowl, ButterKnife, Cup, DishSponge, Egg, Knife\n  - Lettuce, PepperShaker, Potato, SoapBottle, Spatula, Spoon\n  - Statue, Vase, WineBottle\nLivingRoom:\n  - Book, Bowl, KeyChain, Pen, Pencil, RemoteControl\n  - Vase, Watch\nBedroom:\n  - AlarmClock, Book, Pillow, RemoteControl, TennisRacket, Watch\nBathroom:\n  - PaperTowelRoll, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "CounterTop",
+        "DishSponge",
+        "GarbageBag"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Go to DishSponge"
+        },
+        {
+          "action": "Grab",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Pick up DishSponge"
+        },
+        {
+          "action": "Navigate",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Go to CounterTop"
+        },
+        {
+          "action": "Place",
+          "object": "CounterTop",
+          "target": "",
+          "reason": "Place CounterTop"
+        }
+      ],
+      "expected_objects": [
+        "DishSponge",
+        "CounterTop"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 5,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 5
+      }
+    },
+    {
+      "task_id": "P06_07",
+      "task_desc": "Place the cloth on the sink",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "Cloth",
+        "Sink"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Go to Cloth"
+        },
+        {
+          "action": "Grab",
+          "object": "Cloth",
+          "target": "",
+          "reason": "Pick up Cloth"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to Sink"
+        },
+        {
+          "action": "Place",
+          "object": "Sink",
+          "target": "",
+          "reason": "Place Sink"
+        }
+      ],
+      "expected_objects": [
+        "Cloth",
+        "Sink"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P07_04",
+      "task_desc": "Place the credit card on the bed",
+      "room": "house",
+      "scene": "procthor_val_7",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 1.75), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Desk, Drawer, Dresser, FloorLamp, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - BaseballBat, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Mug, Pen, Pencil, Pillow, Statue\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "Bed",
+        "CreditCard"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Go to CreditCard"
+        },
+        {
+          "action": "Grab",
+          "object": "CreditCard",
+          "target": "",
+          "reason": "Pick up CreditCard"
+        },
+        {
+          "action": "Navigate",
+          "object": "Bed",
+          "target": "",
+          "reason": "Go to Bed"
+        },
+        {
+          "action": "Place",
+          "object": "Bed",
+          "target": "",
+          "reason": "Place Bed"
+        }
+      ],
+      "expected_objects": [
+        "CreditCard",
+        "Bed"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 7,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 7
+      }
+    },
+    {
+      "task_id": "P08_07",
+      "task_desc": "Place the toilet paper on the sink",
+      "room": "house",
+      "scene": "procthor_val_8",
+      "obs": "Current room: Bathroom\nLocation: (2.50, 3.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: ClothesDryer, Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Plunger, SprayBottle, ToiletPaper",
+      "visible_objects": [
+        "ClothesDryer",
+        "GarbageCan",
+        "Sink",
+        "Toilet",
+        "ToiletPaper"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "ToiletPaper",
+          "target": "",
+          "reason": "Go to ToiletPaper"
+        },
+        {
+          "action": "Grab",
+          "object": "ToiletPaper",
+          "target": "",
+          "reason": "Pick up ToiletPaper"
+        },
+        {
+          "action": "Navigate",
+          "object": "Sink",
+          "target": "",
+          "reason": "Go to Sink"
+        },
+        {
+          "action": "Place",
+          "object": "Sink",
+          "target": "",
+          "reason": "Place Sink"
+        }
+      ],
+      "expected_objects": [
+        "ToiletPaper",
+        "Sink"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 8,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 8
+      }
+    },
+    {
+      "task_id": "P14_09",
+      "task_desc": "Place the box on the dining table",
+      "room": "house",
+      "scene": "procthor_val_14",
+      "obs": "Current room: LivingRoom\nLocation: (4.25, 4.75), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  LivingRoom: ArmChair, DiningTable, FloorLamp, HousePlant, Painting, Safe, Sofa, TVStand, Television\n\nEnvironment:\nLivingRoom:\n  - Book, Bowl, Box, Candle, CreditCard, Newspaper\n  - Pencil, Pillow, Plate, RemoteControl, Statue, Vase\n  - Watch",
+      "visible_objects": [
+        "Box",
+        "DiningTable"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "Box",
+          "target": "",
+          "reason": "Go to Box"
+        },
+        {
+          "action": "Grab",
+          "object": "Box",
+          "target": "",
+          "reason": "Pick up Box"
+        },
+        {
+          "action": "Navigate",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Go to DiningTable"
+        },
+        {
+          "action": "Place",
+          "object": "DiningTable",
+          "target": "",
+          "reason": "Place DiningTable"
+        }
+      ],
+      "expected_objects": [
+        "Box",
+        "DiningTable"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 14,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 14
+      }
+    },
+    {
+      "task_id": "P31_07",
+      "task_desc": "Place the teddy bear on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_31",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 3.00), facing 180\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Chair, DiningTable, DogBed, Drawer, Dresser, FloorLamp, HousePlant, Painting\n  Bathroom: ClothesDryer, Faucet, Painting, Sink, SinkBasin, Toilet, WashingMachine\n\nEnvironment:\nBedroom:\n  - CD, Pencil, RemoteControl, TeddyBear, Vase\nBathroom:\n  - Plunger, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "TeddyBear"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "TeddyBear",
+          "target": "",
+          "reason": "Go to TeddyBear"
+        },
+        {
+          "action": "Grab",
+          "object": "TeddyBear",
+          "target": "",
+          "reason": "Pick up TeddyBear"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "TeddyBear",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 31,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 31
+      }
+    },
+    {
+      "task_id": "P06_08",
+      "task_desc": "Place the dish sponge on the garbage can",
+      "room": "house",
+      "scene": "procthor_val_6",
+      "obs": "Current room: Bathroom\nLocation: (3.75, 2.25), facing 90\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bathroom: Faucet, GarbageCan, LaundryHamper, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBathroom:\n  - Candle, Cloth, DishSponge, PaperTowelRoll, Plunger, SoapBottle",
+      "visible_objects": [
+        "DishSponge",
+        "GarbageCan"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Go to DishSponge"
+        },
+        {
+          "action": "Grab",
+          "object": "DishSponge",
+          "target": "",
+          "reason": "Pick up DishSponge"
+        },
+        {
+          "action": "Navigate",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Go to GarbageCan"
+        },
+        {
+          "action": "Place",
+          "object": "GarbageCan",
+          "target": "",
+          "reason": "Place GarbageCan"
+        }
+      ],
+      "expected_objects": [
+        "DishSponge",
+        "GarbageCan"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 6,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 6
+      }
+    },
+    {
+      "task_id": "P07_05",
+      "task_desc": "Place the key chain on the arm chair",
+      "room": "house",
+      "scene": "procthor_val_7",
+      "obs": "Current room: Bedroom\nLocation: (2.50, 1.75), facing 0\u00b0\nHolding: nothing\nFound: nothing\nArrived: none\nEnv:\n  Bedroom: ArmChair, Bed, Desk, Drawer, Dresser, FloorLamp, HousePlant, Painting, Television\n  Bathroom: Faucet, GarbageCan, Painting, Sink, SinkBasin, Toilet\n\nEnvironment:\nBedroom:\n  - BaseballBat, Book, CellPhone, CreditCard, KeyChain, Laptop\n  - Mug, Pen, Pencil, Pillow, Statue\nBathroom:\n  - DishSponge, Plunger, SoapBar, SoapBottle, ToiletPaper",
+      "visible_objects": [
+        "ArmChair",
+        "Bed",
+        "KeyChain"
+      ],
+      "reference_steps": [
+        {
+          "action": "Navigate",
+          "object": "KeyChain",
+          "target": "",
+          "reason": "Go to KeyChain"
+        },
+        {
+          "action": "Grab",
+          "object": "KeyChain",
+          "target": "",
+          "reason": "Pick up KeyChain"
+        },
+        {
+          "action": "Navigate",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Go to ArmChair"
+        },
+        {
+          "action": "Place",
+          "object": "ArmChair",
+          "target": "",
+          "reason": "Place ArmChair"
+        }
+      ],
+      "expected_objects": [
+        "KeyChain",
+        "ArmChair"
+      ],
+      "difficulty": "medium",
+      "fail_injection": null,
+      "source": "build_procthor_dataset.sim_verified",
+      "sim_type": "procthor",
+      "split": "val",
+      "house_index": 7,
+      "_meta": {
+        "simulator_type": "procthor",
+        "split": "val",
+        "house_index": 7
+      }
+    }
+  ]
+}
