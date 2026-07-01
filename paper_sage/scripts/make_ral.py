@@ -139,20 +139,20 @@ mm = mm.replace("\\usepackage[hidelinks]{hyperref}\n", RAL_VSPACE, 1)
 
 # 7-author block (Phung/Jun/Hwang inserted at positions 4-6; Shin -> 7)
 mm = mm.replace(
-    "\\IEEEauthorblockN{Trung Minh Bui\\IEEEauthorrefmark{1},\n"
-    "Jongsul Moon\\IEEEauthorrefmark{1},\n"
-    "YoungOuk Kim\\IEEEauthorrefmark{1},\n"
-    "and Dongin Shin\\IEEEauthorrefmark{1}\\IEEEauthorrefmark{2}}",
-    "\\IEEEauthorblockN{Trung Minh Bui\\IEEEauthorrefmark{1},\n"
-    "Jongsul Moon\\IEEEauthorrefmark{1},\n"
-    "YoungOuk Kim\\IEEEauthorrefmark{1},\n"
-    "Ngoc Quang Phung\\IEEEauthorrefmark{1},\\\\\n"
-    "Sewoong Jun\\IEEEauthorrefmark{1},\n"
-    "Jung-Hoon Hwang\\IEEEauthorrefmark{1},\n"
-    "and Dongin Shin\\IEEEauthorrefmark{1}\\IEEEauthorrefmark{2}}")
+    "\\IEEEauthorblockN{Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "and Anonymous Author\\IEEEauthorrefmark{1}\\IEEEauthorrefmark{2}}",
+    "\\IEEEauthorblockN{Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\\\\\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "Anonymous Author\\IEEEauthorrefmark{1},\n"
+    "and Anonymous Author\\IEEEauthorrefmark{1}\\IEEEauthorrefmark{2}}")
 mm = mm.replace(
-    "\\IEEEauthorblockA{\\{moonjongsul, kimyo\\}@keti.re.kr, di\\_shin@keti.re.kr}}",
-    "\\IEEEauthorblockA{\\{moonjongsul, kimyo, ngocpq, daniel, hwangjh\\}@keti.re.kr, di\\_shin@keti.re.kr}}")
+    "\\IEEEauthorblockA{\\{anon\\}@anon.invalid, di\\_shin@anon.invalid}}",
+    "\\IEEEauthorblockA{\\{anon\\}@anon.invalid, di\\_shin@anon.invalid}}")
 
 open(os.path.join(ICRA, "ral/main.tex"), "w").write(mm)
 

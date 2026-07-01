@@ -136,7 +136,7 @@ for composition, collection, intended use, and limitations.
 ```bibtex
 @inproceedings{sage2026,
   title     = {{SAGE}: Symbolic Action-Gating and Editing for {LLM} Task Planners},
-  author    = {Bui, Trung Minh and others},
+  author    = {Anonymous},
   booktitle = {(under review)},
   year      = {2026}
 }

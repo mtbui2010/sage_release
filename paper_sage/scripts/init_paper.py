@@ -104,18 +104,18 @@ _DEFAULT_TITLE = (
     r"Local Repair for LLM Task Planning in Embodied Agents"
 )
 _DEFAULT_AUTHORS = (
-    r"Trung Minh Bui${}^{1}$, Jongsul Moon${}^{1}$, "
-    r"YoungOuk Kim${}^{1}$, and Dongin Shin${}^{1,2*}$"
+    r"Anonymous Author${}^{1}$, Anonymous Author${}^{1}$, "
+    r"Anonymous Author${}^{1}$, and Anonymous Author${}^{1,2*}$"
 )
 _DEFAULT_AFFILS = (
     "${}^{1}$Intelligent Robotics Research Center, "
-    "Korea Electronics Technology Institute, \\\\\n"
+    "Anonymous Institution, \\\\\n"
     "Seongnam 13449, Republic of Korea \\\\\n"
-    "(e-mails: \\{moonjongsul, kimyo\\}@keti.re.kr) \\\\\n"
+    "(e-mails: \\{anon\\}@anon.invalid) \\\\\n"
     "${}^{2}$Department of Electronics Engineering, "
-    "Kyung Hee University, \\\\\n"
+    "Anonymous Institution, \\\\\n"
     "Yongin 17104, Republic of Korea "
-    "(e-mail: di\\_shin@keti.re.kr) "
+    "(e-mail: di\\_shin@anon.invalid) "
     "{\\small${}^{*}$ Corresponding author}"
 )
 _DEFAULT_KEYWORDS = (
