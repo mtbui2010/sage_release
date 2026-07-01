@@ -19,7 +19,7 @@ episodes). The verifier never calls an LLM.
 > It is registered as `pyplanner.REGISTRY["SAGE"]` and implemented by
 > `SAGEPlanner` in `pyplanner/sage.py`.
 
-> **Online appendix.** `online_appendix.pdf` (top level) is the paper's
+> **Online appendix.** `online_appendix.md` (top level, renders inline in the browser) is the paper's
 > supplementary material — the claims-to-evidence roadmap, full per-model
 > result grids, recovery-cost and safety-monitor tables, generalization and
 > rule-quality studies, human-judged end-task success, on-device results, and
@@ -31,7 +31,7 @@ episodes). The verifier never calls an LLM.
 ## 1. What’s in this bundle
 
 ```
-online_appendix.pdf        Paper supplementary material (all extra tables)
+online_appendix.md         Paper supplementary material (renders inline; all tables)
 pyplanner/                 The pluggable LLM-planner library
   pyplanner/               core package
     sage.py                the SAGE planner (BasePlanner subclass)
