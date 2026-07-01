@@ -25,16 +25,16 @@ Headline results (qwen2.5:7b unless noted; full per-model tables in
 ### How it works: gate + edit
 
 ```
-                        ┌───────────────────── EDIT (on violation): ─────────────────────┐
-                        │            regenerate only the failed sub-goal's suffix         │
-                        ▼                                                                 │
-  task ─► decompose ─► expand ─►  ┌───────────────────────────┐  pass ─► certified plan ─► execute
-          (sub-goals)  (per goal) │  GATE: symbolic verifier   │                              │ fail
-                        ▲         │  verify preconditions       │◄─────────── recover ◄────────┘
-                        │         │  (LLM-free, 0 tokens, O(|π|))│
-                        └─ retrieve└───────────────────────────┘
-                           (hybrid memory)          │ violation → typed reason
-                                                     └──────────────► EDIT (above)
+  task ─► decompose ─► expand ─────►  ╔══════════════════════════╗ ──pass──► certified plan ─► execute
+           (sub-goals)  ▲  (per        ║  GATE (symbolic verifier) ║                               │
+                        │  sub-goal)    ║  verify preconditions     ║                          fail │
+                hybrid memory           ║  LLM-free · 0 tok · O(|π|) ║                               │
+                (few-shot)              ╚══════════════════════════╝                               │
+                                              │ violation (typed reason)                            │
+                                              ▼                                                     │
+                        EDIT ── regenerate ONLY the failed sub-goal's suffix ──┐   ◄──── recover ───┘
+                          ▲                                                     │
+                          └───────────────── re-enter GATE ◄───────────────────┘
 ```
 
 The symbolic **gate** is LLM-free (zero tokens, `O(|π|)`); the sub-goal-local
