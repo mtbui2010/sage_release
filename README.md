@@ -3,6 +3,48 @@
 Reference implementation, benchmark, and reproduction code for the paper
 **“SAGE: Symbolic Action-Gating and Editing for LLM Task Planners.”**
 
+> ### 📄 Reviewers — start here
+> **Full supplementary tables & analysis → [`online_appendix.md`](online_appendix.md)**
+> (claims→evidence roadmap, per-model result grids, failure-recovery cost, the
+> non-circular safety monitor, human-judged end-task success, on-device (Jetson)
+> results, verbatim prompts — renders inline in your browser).
+
+## Why SAGE
+
+Headline results (qwen2.5:7b unless noted; full per-model tables in
+[`online_appendix.md`](online_appendix.md)):
+
+| Axis | Baselines | **SAGE** |
+|---|---|---|
+| Completeness on **hard compound tasks** | 0.78 (Hier-FS) | **0.85**  (+0.06 … +0.23 across models) |
+| **Failure-recovery cost** (equal 100% recovery) | 2.9–3.7 LLM calls | **1.18**  (2.4–3.3× fewer) |
+| **Runtime safety** (verify-before-execute) | — | **+0.107** step-success for Direct; **206** unsafe actions blocked |
+| **Human-judged end-task success** | 0.40 / 0.28 | **0.53**  (κ = 0.65) |
+| **Verifier cost on the edge** (Jetson AGX Orin) | — | **0.008 ms/plan**, zero tokens |
+
+### How it works: gate + edit
+
+```
+                        ┌───────────────────── EDIT (on violation): ─────────────────────┐
+                        │            regenerate only the failed sub-goal's suffix         │
+                        ▼                                                                 │
+  task ─► decompose ─► expand ─►  ┌───────────────────────────┐  pass ─► certified plan ─► execute
+          (sub-goals)  (per goal) │  GATE: symbolic verifier   │                              │ fail
+                        ▲         │  verify preconditions       │◄─────────── recover ◄────────┘
+                        │         │  (LLM-free, 0 tokens, O(|π|))│
+                        └─ retrieve└───────────────────────────┘
+                           (hybrid memory)          │ violation → typed reason
+                                                     └──────────────► EDIT (above)
+```
+
+The symbolic **gate** is LLM-free (zero tokens, `O(|π|)`); the sub-goal-local
+**edit** regenerates only the failed sub-goal's suffix, keeping completed and
+untouched future work. Results above are non-circular where applicable (the safety
+monitor is scored by a simulator signal the verifier never sees). Every table is in
+[`online_appendix.md`](online_appendix.md).
+
+---
+
 SAGE is a single-LLM embodied task planner built from two lightweight mechanisms:
 
 1. a **rule-based symbolic precondition verifier** (~250 lines of Python, zero
@@ -18,13 +60,6 @@ episodes). The verifier never calls an LLM.
 > **Naming note.** The method is **SAGE** (Symbolic Action-Gating and Editing).
 > It is registered as `pyplanner.REGISTRY["SAGE"]` and implemented by
 > `SAGEPlanner` in `pyplanner/sage.py`.
-
-> **Online appendix.** `online_appendix.md` (top level, renders inline in the browser) is the paper's
-> supplementary material — the claims-to-evidence roadmap, full per-model
-> result grids, recovery-cost and safety-monitor tables, generalization and
-> rule-quality studies, human-judged end-task success, on-device results, and
-> the verbatim prompt templates. The in-paper "online appendix" references point
-> here.
 
 ---
 
