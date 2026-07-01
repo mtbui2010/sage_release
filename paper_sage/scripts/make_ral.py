@@ -137,7 +137,7 @@ RAL_VSPACE = (
 )
 mm = mm.replace("\\usepackage[hidelinks]{hyperref}\n", RAL_VSPACE, 1)
 
-# 7-author block (Phung/Jun/Hwang inserted at positions 4-6; Shin -> 7)
+# author block (anonymized for review)
 mm = mm.replace(
     "\\IEEEauthorblockN{Anonymous Author\\IEEEauthorrefmark{1},\n"
     "Anonymous Author\\IEEEauthorrefmark{1},\n"
