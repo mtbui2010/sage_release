@@ -18,7 +18,7 @@ from __future__ import annotations
 import argparse, json, os, sys
 from itertools import combinations
 
-PYP = "/media/keti/workdir/remote_dir/pyplanner"
+PYP = "/path/to/pyplanner"
 sys.path.insert(0, PYP); sys.path.insert(0, os.path.join(PYP, "apps"))
 from pyplanner.verifier import normalize_plan, simulate  # noqa: E402
 

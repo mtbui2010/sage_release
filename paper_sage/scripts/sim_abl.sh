@@ -9,8 +9,8 @@ LLM="${1:?usage: sim_abl.sh LLM_HOST PORT1 PORT2 MODEL...}"; shift
 P1="${1:?need port1}"; shift
 P2="${1:?need port2}"; shift
 MODELS=("$@")
-ROOT=/media/keti/workdir/remote_dir/paper_sage
-PYP=/media/keti/workdir/remote_dir/pyplanner
+ROOT=/path/to/paper_sage
+PYP=/path/to/pyplanner
 export PYTHONPATH="$PYP:$PYP/apps" OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-400}"
 METHODS=(SAGE SAGE-NoVerifier SAGE-NoRepair SAGE-NoMemory)
 mkdir -p "$ROOT/results/sim" "$ROOT/results/sim_logs"

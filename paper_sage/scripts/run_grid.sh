@@ -23,7 +23,7 @@ METHODS="${METHODS:-Direct,CoT,Few-Shot CoT,Self-Refine,ReAct,Hierarchical,Hiera
 SEEDS="${SEEDS:-0 1 2}"
 # Run on the EXPANDED 75-task benchmark; SAGE seed-memory stays on the curated
 # 38 (gt-path default) so the 37 new tasks are a held-out, no-leak evaluation.
-DATASET="${DATASET:-/media/keti/workdir/remote_dir/pyplanner/eval_dataset_expanded.json}"
+DATASET="${DATASET:-/path/to/pyplanner/eval_dataset_expanded.json}"
 HERE="$(cd "$(dirname "$0")/.." && pwd)"; cd "$HERE" || exit 1
 BASE_MEM="data/memory.jsonl"
 mkdir -p data/grid_mem results/grid_logs

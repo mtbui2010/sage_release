@@ -7,8 +7,8 @@ set -u
 LLM="${1:?usage: sim_host.sh LLM_HOST SIM_PORT MODEL...}"; shift
 PORT="${1:?need sim port}"; shift
 MODELS=("$@")
-ROOT=/media/keti/workdir/remote_dir/paper_sage
-PYP=/media/keti/workdir/remote_dir/pyplanner
+ROOT=/path/to/paper_sage
+PYP=/path/to/pyplanner
 DS=$PYP/eval_dataset_expanded.json
 mkdir -p "$ROOT/results/sim" "$ROOT/results/sim_logs"
 export PYTHONPATH="$PYP:$PYP/apps" OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-300}"

@@ -469,7 +469,7 @@ def main():
         from pyplanner.base import DEFAULT_HOST, DEFAULT_MODEL, DEFAULT_BACKEND
     except Exception as e:  # noqa: BLE001
         print(f"[fatal] cannot import pyplanner: {e}\n"
-              f"        pip install -e /media/keti/workdir/remote_dir/pyplanner", file=sys.stderr)
+              f"        pip install -e /path/to/pyplanner", file=sys.stderr)
         sys.exit(2)
 
     host = args.host or DEFAULT_HOST

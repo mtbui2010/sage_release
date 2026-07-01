@@ -6,8 +6,8 @@
 set -u
 LLM="${1:?usage: sim_split.sh LLM_HOST MODEL...}"; shift
 MODELS=("$@")
-ROOT=/media/keti/workdir/remote_dir/paper_sage
-PYP=/media/keti/workdir/remote_dir/pyplanner
+ROOT=/path/to/paper_sage
+PYP=/path/to/pyplanner
 export PYTHONPATH="$PYP:$PYP/apps" OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-300}"
 MAXREPLAN="${MAXREPLAN:-2}"   # 0 = execute-as-planned (discriminative); 2 = with recovery
 SUFFIX="${SUFFIX:-}"          # output filename suffix, e.g. _r0

@@ -1,6 +1,6 @@
 #!/bin/bash
 set -u
-cd /media/keti/workdir/remote_dir/paper_sage
+cd /path/to/paper_sage
 DS=../pyplanner/eval_dataset_expanded.json
 SUBSET="K01 L02 B03 X03 K10 L10 A12 K04 L04 B06 X01 K15 K16 L14 K08 L07 B08 A08 K19 A19"
 for tag in 3b 7b 14b; do
